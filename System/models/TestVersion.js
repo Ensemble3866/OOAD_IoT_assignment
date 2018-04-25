@@ -1,7 +1,12 @@
-function testVersion(category, name){
-    this.name = name;
+class testVersion{
+    constructor(name, category){
+        this.name = name;
     this.category = category;
+    }
+    GetName(){
+        return this.name;
+    }
 }
 
 
-module.export = testVersion;
+module.exports = testVersion;

@@ -3,7 +3,7 @@ var path = require('path');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 
-var testVersion = require('./models/TestVersion');
+const testVersion = require('./models/TestVersion.js');
 
 var app = express();
 
@@ -17,5 +17,5 @@ app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-//var myVersion = new testVersion("test", "test");
-//console.log(myVersion.GetName());
+var myVersion = new testVersion("test", "test");
+console.log(myVersion.GetName());
