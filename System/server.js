@@ -5,6 +5,10 @@ var bodyParser = require('body-parser');
 
 const testVersion = require('./models/TestVersion.js');
 
+//const Repository = require('/models/Repository');
+import repository from Repository;
+
+
 var app = express();
 
 app.set('port', process.env.PORT || 3000);
@@ -17,5 +21,6 @@ app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-var myVersion = new testVersion("test", "test");
-console.log(myVersion.GetName());
+console.log(repository.GetTest());
+
+//module.exports.Repository = repository;
