@@ -1,13 +1,13 @@
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
+import express from 'express';
+import path from 'path';
+import favicon from 'serve-favicon';
+import logger from'morgan';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
+import cookieSession from 'cookie-session';
 
-const testVersion = require('./models/TestVersion.js');
-
-//const Repository = require('/models/Repository');
-import repository from Repository;
-
+import testVersion from './models/TestVersion.js';
+console.log(testVersion.GetName());
 
 var app = express();
 
@@ -18,9 +18,26 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + app.get('port'));
+console.log('Express server listening on port ' + app.get('port'));
 });
 
-console.log(repository.GetTest());
+/* Set testing data. */
 
-//module.exports.Repository = repository;
+
+
+
+
+
+/* */
+
+app.use(function(err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+  
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
+  });
+
+export default app;

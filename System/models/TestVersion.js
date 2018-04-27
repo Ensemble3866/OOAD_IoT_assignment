@@ -1,12 +1,13 @@
-class testVersion{
+class TestVersion{
     constructor(name, category){
-        this.name = name;
-    this.category = category;
+            this.name = name;
+            this.category = category;
+        }
+        GetName(){
+            return this.name;
+        }
     }
-    GetName(){
-        return this.name;
-    }
-}
 
+    var testVersion = new TestVersion("test", "test");
 
-module.exports = testVersion;
+    export default testVersion;
