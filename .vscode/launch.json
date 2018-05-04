@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "啟動程式",
-            "program": "${workspaceFolder}/System\\starter.js"
+            "program": "${workspaceFolder}\\IoTTestingSystem\\bin\\starter.js"
         }
     ]
 }
