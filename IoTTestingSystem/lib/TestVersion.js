@@ -1,13 +1,16 @@
 class TestVersion{
     constructor(name, category){
-            this.name = name;
-            this.category = category;
-        }
-        GetName(){
-            return this.name;
-        }
+        this.name = name;
+        this.category = category;
     }
 
-    var testVersion = new TestVersion("test", "test");
+    GetName(){
+        return this.name;
+    }
 
-    export default testVersion;
+    GetCategory(){
+        return this.category;
+    }
+}
+
+module.exports = TestVersion;

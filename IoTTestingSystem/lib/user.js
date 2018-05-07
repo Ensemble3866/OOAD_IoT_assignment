@@ -1,9 +1,14 @@
 
 class User{
-    constructor(account, password, auth){
+    constructor(id, account, password, auth){
+        this.id = id;
         this.account = account;
         this.password = password;
-        this.auth = auth;
+        this.authority = auth;
+    }
+
+    GetId(){
+        return this.id;
     }
 
     GetAccount(){
@@ -14,9 +19,9 @@ class User{
         return this.password;
     }
 
-    GetAuth(){
-        return this.auth;
+    GetAuthority(){
+        return this.authority;
     }
 }
 
-export default User;
+module.exports = User;
