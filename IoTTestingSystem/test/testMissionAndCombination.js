@@ -8,7 +8,7 @@ var testMission =  testdata.testMission;
 
 describe('#TestMission', () => {
     it('Test testMission lifecycle', done => {
-        testMission.GetName = "myTestMission";
+        testMission.GetTitle().should.equal("myTestMission");
         testMission.GetCombinationAmount().should.equal(48);
         testMission.GetStatus().should.equal("inital");
         testMission.StartTesting();
