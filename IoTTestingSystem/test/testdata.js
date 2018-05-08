@@ -1,5 +1,6 @@
 const TestVersionManager = require('../lib/testVersionManager');
 const TestMission = require('../lib/testMission');
+const TestMissionManager = require('../lib/testMissionManager');
 
 var testVersionManager = new TestVersionManager();
 testVersionManager.MakeNewVersion("Android 5.01", "Phone");
@@ -22,5 +23,14 @@ var testMission = new TestMission("myTestMission",
                                   testVersionManager.GetVersionByCategory("Config"));
 
 
+var testMissionManager = new TestMissionManager();
+testMissionManager.CreateMission("testMission",
+                                  testVersionManager.GetVersionByCategory("Phone"),
+                                  testVersionManager.GetVersionByCategory("App"),
+                                  testVersionManager.GetVersionByCategory("Frameware"),
+                                  testVersionManager.GetVersionByCategory("Sensor"),
+                                  testVersionManager.GetVersionByCategory("Config"));
+
 exports.testVersionManager = testVersionManager;
 exports.testMission = testMission;
+exports.testMissionManager = testMissionManager;
