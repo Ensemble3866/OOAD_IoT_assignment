@@ -11,22 +11,39 @@
     <!-- DataTable CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
 
-    <link rel="stylesheet" href="css/main_style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/stylesheets/main_style.css">
     <style>
       .div_body{
           padding: 20px 0;
           max-width: 1200px;
           margin: 0 auto;
       }
+      .div_titleBox{
+          padding: 0px 15px 15px 15px;
+      }
+      .div_titleBox h3{
+          margin: 0;
+      }
       .table.dataTable{
         border-collapse: collapse !important;
+      }
+      #div_time{
+          padding-top: 4px;
+      }
+      .fa-check{
+        color: #28a745;
+      }
+      .fa-times{
+          color: #bd2130;
       }
     </style>
   </head>
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html">TS</a>
+        <a class="navbar-brand" href="performTests">TS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -34,10 +51,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index1.html">執行測試</a>
+              <a class="nav-link" href="performTests">執行測試</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="index2.html">歷史紀錄 <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="historyRecord">歷史紀錄 <span class="sr-only">(current)</span></a>
             </li>
           </ul>
           <span class="navbar-text">林亮勳(開發人員)</span>
@@ -45,104 +62,94 @@
         </div>
       </nav>
       <div class="div_headImg">
-        <img src="img/bg2.jpg" alt="image">
+        <img src="/images/bg2.jpg" alt="image">
       </div>
     </header>
     <div class="container-fluid">
       <div class="div_body">
+        <div class="div_titleBox">
+            <div class="alert alert-primary clearfix" role="alert">
+                <div class="float-left"><h3>#6 針對HTC ONE (Android 5.1)進行測試</h3></div>
+                <div class="float-right" id="div_time">測試時間: 2018/3/23 13:00:01</div>
+            </div>
+        </div>
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
-                    <th>測試編號</th>
-                    <th>測試標題</th>
-                    <th>測試時間</th>
                     <th>手機版本</th>
                     <th>APP版本</th>
                     <th>韌體版本</th>
                     <th>感測器版本</th>
                     <th>頻道設定</th>
                     <th>測試結果</th>
+                    <th>備註</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>#1</td>
-                    <td>初步測試(1)</td>
-                    <td>2018/3/23 13:00:01</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td><a href="index3.html">60% 成功</a></td>
-                </tr>
-                <tr>
-                    <td>#2</td>
-                    <td>初步測試(2)</td>
-                    <td>2018/3/23 13:00:20</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td><a href="index3.html">40% 成功</a></td>
-                </tr>
-                <tr>
-                    <td>#3</td>
-                    <td>針對iPhone進行測試(1)</td>
-                    <td>2018/3/23 13:35:01</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
+                    <td>HTC ONE (Android 5.1)</td>
+                    <td>4.3.2</td>
+                    <td>Cube 1.01</td>
+                    <td>Motion</td>
                     <td>Taiwan config</td>
-                    <td><a href="index3.html">20% 成功</a></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><a href="">詳細報告</a></td>
                 </tr>
                 <tr>
-                    <td>#4</td>
-                    <td>針對iPhone進行測試(2)</td>
-                    <td>2018/3/23 13:40:01</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
+                    <td>HTC ONE (Android 5.1)</td>
+                    <td>4.3.2</td>
+                    <td>Cube 1.01</td>
+                    <td>Thermo</td>
                     <td>Taiwan config</td>
-                    <td><a href="index3.html">60% 成功</a></td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><a href="">詳細報告</a></td>
                 </tr>
                 <tr>
-                    <td>#5</td>
-                    <td>對新版APP 5.2進行測試</td>
-                    <td>2018/3/24 13:00:01</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td><a href="index3.html">60% 成功</a></td>
+                    <td>HTC ONE (Android 5.1)</td>
+                    <td>4.3.2</td>
+                    <td>Cube 1.02</td>
+                    <td>Motion</td>
+                    <td>Taiwan config</td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><a href="">詳細報告</a></td>
                 </tr>
                 <tr>
-                    <td>#6</td>
-                    <td>日本Channel測試</td>
-                    <td>2018/3/24 15:00:01</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>Japan config</td>
-                    <td><a href="index3.html">60% 成功</a></td>
+                    <td>HTC ONE (Android 5.1)</td>
+                    <td>4.3.2</td>
+                    <td>Cube 1.02</td>
+                    <td>Thermo</td>
+                    <td>Taiwan config</td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><a href="">詳細報告</a></td>
+                </tr>
+                <tr>
+                    <td>HTC ONE (Android 5.1)</td>
+                    <td>4.3.2</td>
+                    <td>Cube 1.03</td>
+                    <td>Motion</td>
+                    <td>Taiwan config</td>
+                    <td><i class="fas fa-times"></i></td>
+                    <td><a href="">詳細報告</a></td>
+                </tr>
+                <tr>
+                    <td>HTC ONE (Android 5.1)</td>
+                    <td>4.3.2</td>
+                    <td>Cube 1.03</td>
+                    <td>Thermo</td>
+                    <td>Taiwan config</td>
+                    <td><i class="fas fa-check"></i></td>
+                    <td><a href="">詳細報告</a></td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <th>測試編號</th>
-                    <th>測試標題</th>
-                    <th>測試時間</th>
                     <th>手機版本</th>
                     <th>APP版本</th>
                     <th>韌體版本</th>
                     <th>感測器版本</th>
                     <th>頻道設定</th>
                     <th>測試結果</th>
+                    <th>備註</th>
                 </tr>
             </tfoot>
         </table>
