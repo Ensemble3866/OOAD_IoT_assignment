@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <title>IoT相容性測試系統</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main_style.css">
+    <style>
+      .div_body{
+          padding: 20px 0;
+          max-width: 1500px;
+          margin: 0 auto;
+      }
+      .div_foot{
+        max-width: 700px;
+        margin: 20px auto;
+      }
+      .form-check{
+        margin-bottom: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">TS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index1.html">執行測試 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="index2.html">歷史紀錄</a>
+            </li>
+          </ul>
+          <span class="navbar-text">林亮勳(開發人員)</span>
+          <button type="button" class="btn btn-light" onclick="logout()">登出</button>
+        </div>
+      </nav>
+      <div class="div_headImg">
+        <img src="img/bg2.jpg" alt="image">
+      </div>
+    </header>
+    <div class="container-fluid">
+      <div class="div_body">
+          <div class="row">
+            <div class="col-sm">
+              <div class="card">
+                <div class="card-header">
+                  手機版本
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> HTC ONE (Android 5.1)</label></div></li>
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Sony XA1 (Android 5.2)</label></div></li>
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Apple iPhone 6 (iOS 10)</label></div></li>
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Apple iPhone 7 (iOS 10)</label></div></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="card">
+                <div class="card-header">
+                  APP版本
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 2.0.1</label></div></li>
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 2.0.2</label></div></li>
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 2.1.2</label></div></li>
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 2.2.1</label></div></li>
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 3.0.1</label></div></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="card">
+                <div class="card-header">
+                  韌體版本
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Cube 1.01</label></div></li>
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Cube 1.02</label></div></li>
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Super Cube 2.6</label></div></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="card">
+                <div class="card-header">
+                  感測器版本
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Motion 1.1</label></div></li>
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Motion 1.2</label></div></li>
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Thermo 2.1</label></div></li>
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Thermo 2.2</label></div></li>
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Thermo 2.3</label></div></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="card">
+                <div class="card-header">
+                  頻道設定
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Taiwan config</label></div></li>
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Japan config</label></div></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="div_foot">
+              <div class="row">
+                <div class="col-10">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">測試標題</span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="請輸入標題" aria-label="測試標題" aria-describedby="basic-addon1">
+                  </div>
+                </div>
+                <div class="col">
+                  <button type="button" class="btn btn-primary btn-block" onclick="startTest()">開始測試</button>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+    function startTest(){
+      location.href= ("complete.html");
+    }
+    </script>
+
+    <!-- jQuery -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+    <!-- <script src="js/params.js"></script>
+    <script src="js/server.js"></script> -->
+  </body>
+</html>

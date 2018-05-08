@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <title>IoT相容性測試系統</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- DataTable CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+
+    <link rel="stylesheet" href="css/main_style.css">
+    <style>
+      .div_body{
+          padding: 20px 0;
+          max-width: 1200px;
+          margin: 0 auto;
+      }
+      .table.dataTable{
+        border-collapse: collapse !important;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">TS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index1.html">執行測試</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="index2.html">歷史紀錄 <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <span class="navbar-text">林亮勳(開發人員)</span>
+          <button type="button" class="btn btn-light" onclick="logout()">登出</button>
+        </div>
+      </nav>
+      <div class="div_headImg">
+        <img src="img/bg2.jpg" alt="image">
+      </div>
+    </header>
+    <div class="container-fluid">
+      <div class="div_body">
+        <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+                <tr>
+                    <th>測試編號</th>
+                    <th>測試標題</th>
+                    <th>測試時間</th>
+                    <th>手機版本</th>
+                    <th>APP版本</th>
+                    <th>韌體版本</th>
+                    <th>感測器版本</th>
+                    <th>頻道設定</th>
+                    <th>測試結果</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#1</td>
+                    <td>初步測試(1)</td>
+                    <td>2018/3/23 13:00:01</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td><a href="index3.html">60% 成功</a></td>
+                </tr>
+                <tr>
+                    <td>#2</td>
+                    <td>初步測試(2)</td>
+                    <td>2018/3/23 13:00:20</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td><a href="index3.html">40% 成功</a></td>
+                </tr>
+                <tr>
+                    <td>#3</td>
+                    <td>針對iPhone進行測試(1)</td>
+                    <td>2018/3/23 13:35:01</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>Taiwan config</td>
+                    <td><a href="index3.html">20% 成功</a></td>
+                </tr>
+                <tr>
+                    <td>#4</td>
+                    <td>針對iPhone進行測試(2)</td>
+                    <td>2018/3/23 13:40:01</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>Taiwan config</td>
+                    <td><a href="index3.html">60% 成功</a></td>
+                </tr>
+                <tr>
+                    <td>#5</td>
+                    <td>對新版APP 5.2進行測試</td>
+                    <td>2018/3/24 13:00:01</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td><a href="index3.html">60% 成功</a></td>
+                </tr>
+                <tr>
+                    <td>#6</td>
+                    <td>日本Channel測試</td>
+                    <td>2018/3/24 15:00:01</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>共兩項</td>
+                    <td>Japan config</td>
+                    <td><a href="index3.html">60% 成功</a></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>測試編號</th>
+                    <th>測試標題</th>
+                    <th>測試時間</th>
+                    <th>手機版本</th>
+                    <th>APP版本</th>
+                    <th>韌體版本</th>
+                    <th>感測器版本</th>
+                    <th>頻道設定</th>
+                    <th>測試結果</th>
+                </tr>
+            </tfoot>
+        </table>
+      </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- DataTable -->
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+    </script>
+
+
+    <!-- jQuery -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+    <!-- <script src="js/params.js"></script>
+    <script src="js/server.js"></script> -->
+  </body>
+</html>
