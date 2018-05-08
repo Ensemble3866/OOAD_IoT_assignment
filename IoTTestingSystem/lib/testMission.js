@@ -2,9 +2,9 @@ const TestVersion = require('../lib/testVersion');
 const TestCombination = require('../lib/testCombination');
 
 class TestMission{
-    constructor(PhoneVersions, appVersions, FWVersions, ChannelVersions, HWVersions){
+    constructor(MissionName, PhoneVersions, appVersions, FWVersions, ChannelVersions, HWVersions){
         this.status = "inital";
-
+        this.name = MissionName;
         this.combinations = new Array();
         PhoneVersions.forEach((Phone, PhoneIndex, PhoneArray) => {
             appVersions.forEach((app, appIndex, appArray) => {
@@ -24,6 +24,10 @@ class TestMission{
                 });
             });
         });
+    }
+
+    GetName(){
+        return this.name;
     }
 
     GetCombinationAmount(){
