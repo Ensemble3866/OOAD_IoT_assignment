@@ -1,0 +1,19 @@
+body{
+    font-family: 微軟正黑體, Arial, Helvetica, sans-serif;
+}
+
+
+
+.navbar .navbar-text{
+    margin-right: 10px;
+}
+.div_body{
+    padding: 10px 0;
+}
+.div_headImg{
+    overflow: hidden;
+    max-height: 100px;
+}
+.div_headImg img{
+    max-width: 100%;
+}
