@@ -70,7 +70,7 @@
         <div class="div_titleBox">
             <div class="alert alert-primary clearfix" role="alert">
                 <div class="float-left"><h3><%= mission.title %></h3></div>
-                <div class="float-right" id="div_time">測試時間: 2018/3/23 13:00:01</div>
+                <div class="float-right" id="div_time">測試時間: <%= mission.startTime %></div>
             </div>
         </div>
         <!-- <p><%= test %></p> -->
@@ -94,64 +94,16 @@
                     <td><%= mission.combinations[key].versionList[2].name %></td>
                     <td><%= mission.combinations[key].versionList[3].name %></td>
                     <td><%= mission.combinations[key].versionList[4].name %></td>
-                    <td><i class="fas fa-check"></i><%= mission.combinations[key].result %></td>
+                    <td>
+                        <% if(mission.combinations[key].result == true) { %>
+                        <i class="fas fa-check"></i>
+                        <% } else{ %>
+                        <i class="fas fa-times"></i>
+                        <% } %>
+                    </td>
                     <td><a href="<%= mission.combinations[key].report %>">詳細報告</a></td>
                 </tr>
                 <% } %>
-                <!-- <tr>
-                    <td>HTC ONE (Android 5.1)</td>
-                    <td>4.3.2</td>
-                    <td>Cube 1.01</td>
-                    <td>Motion</td>
-                    <td>Taiwan config</td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><a href="">詳細報告</a></td>
-                </tr>
-                <tr>
-                    <td>HTC ONE (Android 5.1)</td>
-                    <td>4.3.2</td>
-                    <td>Cube 1.01</td>
-                    <td>Thermo</td>
-                    <td>Taiwan config</td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><a href="">詳細報告</a></td>
-                </tr>
-                <tr>
-                    <td>HTC ONE (Android 5.1)</td>
-                    <td>4.3.2</td>
-                    <td>Cube 1.02</td>
-                    <td>Motion</td>
-                    <td>Taiwan config</td>
-                    <td><i class="fas fa-times"></i></td>
-                    <td><a href="">詳細報告</a></td>
-                </tr>
-                <tr>
-                    <td>HTC ONE (Android 5.1)</td>
-                    <td>4.3.2</td>
-                    <td>Cube 1.02</td>
-                    <td>Thermo</td>
-                    <td>Taiwan config</td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><a href="">詳細報告</a></td>
-                </tr>
-                <tr>
-                    <td>HTC ONE (Android 5.1)</td>
-                    <td>4.3.2</td>
-                    <td>Cube 1.03</td>
-                    <td>Motion</td>
-                    <td>Taiwan config</td>
-                    <td><i class="fas fa-times"></i></td>
-                    <td><a href="">詳細報告</a></td>
-                </tr>
-                <tr>
-                    <td>HTC ONE (Android 5.1)</td>
-                    <td>4.3.2</td>
-                    <td>Cube 1.03</td>
-                    <td>Thermo</td>
-                    <td>Taiwan config</td>
-                    <td><i class="fas fa-check"></i></td>
-                    <td><a href="">詳細報告</a></td>
-                </tr> -->
             </tbody>
             <tfoot>
                 <tr>

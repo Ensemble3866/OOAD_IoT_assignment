@@ -65,18 +65,17 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- <p><%= test %></p> -->
                 <% for (key in missions) { %>
                 <tr>
                     <td>#1</td>
                     <td><%= missions[key].title %></td>
-                    <td>2018/3/23 13:00:01</td>
-                    <td></td>
+                    <td><%= missions[key].startTime %></td>
                     <td>共兩項</td>
                     <td>共兩項</td>
                     <td>共兩項</td>
                     <td>共兩項</td>
-                    <td><a href="testResults?missionName=testMission"><%= missions[key].status %></a></td>
+                    <td>共兩項</td>
+                    <td><a href="testResults?missionName=<%= missions[key].title %>"><%= missions[key].status %></a></td>
                 </tr>
                 <% } %>
             </tbody>
