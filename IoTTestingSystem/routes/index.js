@@ -5,15 +5,23 @@ var testdata = require('../test/testdata');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express',
-                        testName : testdata.testVersionManager.GetVersionByIndex(0).GetName(),
-                        categoryList: testdata.testVersionManager.GetCategories()
-                      });
+  res.render('index', { title: 'Express' });
 });
 
 /* GET performTests page. */
 router.get('/performTests', function(req, res, next) {
-  res.render('performTests', { title: 'Express' });
+  var categories = testdata.testVersionManager.GetCategories();
+
+  var categoryList = new Array();
+  for (const key in categories) {
+    var obj = {
+      category: categories[key],
+      list: testdata.testVersionManager.GetVersionByCategory(categories[key])
+    }
+    categoryList.push(obj);
+  }
+  
+  res.render('performTests', { categoryList: categoryList });
 });
 
 /* GET sendTest page. */

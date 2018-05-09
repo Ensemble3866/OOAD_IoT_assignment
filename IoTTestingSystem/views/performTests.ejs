@@ -52,70 +52,20 @@
     <div class="container-fluid">
       <div class="div_body">
           <div class="row">
+            <% for (key in categoryList) { %>
             <div class="col-sm">
               <div class="card">
                 <div class="card-header">
-                  手機版本
+                  <%= categoryList[key].category %>
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> HTC ONE (Android 5.1)</label></div></li>
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Sony XA1 (Android 5.2)</label></div></li>
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Apple iPhone 6 (iOS 10)</label></div></li>
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Apple iPhone 7 (iOS 10)</label></div></li>
+                  <% for (index in categoryList[key].list) { %>
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> <%= categoryList[key].list[index].name %></label></div></li>
+                  <% } %>
                 </ul>
               </div>
             </div>
-            <div class="col-sm">
-              <div class="card">
-                <div class="card-header">
-                  APP版本
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 2.0.1</label></div></li>
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 2.0.2</label></div></li>
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 2.1.2</label></div></li>
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 2.2.1</label></div></li>
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> 3.0.1</label></div></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-sm">
-              <div class="card">
-                <div class="card-header">
-                  韌體版本
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Cube 1.01</label></div></li>
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Cube 1.02</label></div></li>
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Super Cube 2.6</label></div></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-sm">
-              <div class="card">
-                <div class="card-header">
-                  感測器版本
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Motion 1.1</label></div></li>
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Motion 1.2</label></div></li>
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Thermo 2.1</label></div></li>
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Thermo 2.2</label></div></li>
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Thermo 2.3</label></div></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-sm">
-              <div class="card">
-                <div class="card-header">
-                  頻道設定
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Taiwan config</label></div></li>
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> Japan config</label></div></li>
-                </ul>
-              </div>
-            </div>
+            <% } %>
           </div>
           <hr>
           <div class="div_foot">
