@@ -15,14 +15,6 @@ testVersionManager.MakeNewVersion("Thermo 1.1", "Sensor");
 testVersionManager.MakeNewVersion("JP", "Config");
 testVersionManager.MakeNewVersion("TW", "Config");
 
-var testMission = new TestMission("myTestMission",
-                                  testVersionManager.GetVersionByCategory("Phone"),
-                                  testVersionManager.GetVersionByCategory("App"),
-                                  testVersionManager.GetVersionByCategory("Frameware"),
-                                  testVersionManager.GetVersionByCategory("Sensor"),
-                                  testVersionManager.GetVersionByCategory("Config"));
-
-
 var testMissionManager = new TestMissionManager();
 testMissionManager.CreateMission("testMission",
                                   testVersionManager.GetVersionByCategory("Phone"),
@@ -32,5 +24,4 @@ testMissionManager.CreateMission("testMission",
                                   testVersionManager.GetVersionByCategory("Config"));
 
 exports.testVersionManager = testVersionManager;
-exports.testMission = testMission;
 exports.testMissionManager = testMissionManager;

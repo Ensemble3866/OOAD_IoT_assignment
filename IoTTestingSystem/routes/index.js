@@ -18,7 +18,17 @@ router.get('/performTests', function(req, res, next) {
 
 /* GET sendTest page. */
 router.get('/sendTest', function(req, res, next) {
-  res.render('sendTest', { title: 'Express' });
+  /* Create testMission. */
+  try{
+  testdata.testMissionManager.CreateMission(req.body.title, req.body.phones, req.body.apps,
+                                            req.body.framewares, req.body.sensors, req.body.configs);
+  }
+  catch(error){
+
+  }
+  finally{
+    res.render('sendTest', { title: 'Express' });
+  }
 });
 
 /* GET historyRecord page. */

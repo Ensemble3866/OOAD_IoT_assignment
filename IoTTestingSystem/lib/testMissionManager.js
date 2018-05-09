@@ -10,8 +10,8 @@ class TestMissionManager{
         var result = this.missionList.find((mission, index, array) => {
             return mission.title == title;
         });
-        if(result !== undefined){
-            throw "Title repeat.";
+        if(result != undefined){
+            throw new Error("Title repeat.");
         }
         var newMission = new TestMission(title, phones, apps, framewares, sensors, configs);
         this.missionList.push(newMission);
