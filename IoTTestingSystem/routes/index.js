@@ -42,14 +42,15 @@ router.get('/sendTest', function(req, res, next) {
 /* GET historyRecord page. */
 router.get('/historyRecord', function(req, res, next) {
   var missions = testdata.testMissionManager.GetMissions();
-  res.render('historyRecord', { missions: missions,test: JSON.stringify(missions) });
+  res.render('historyRecord', { missions: missions, test: JSON.stringify(missions) });
 });
 
 /* GET testResults page. */
 router.get('/testResults', function(req, res, next) {
-  console.log(req.body);
-  // console.log(res);
-  res.render('testResults', { title: 'Express' });
+  console.log('missionName = ' + req.query.missionName);
+  var mission = testdata.testMissionManager.GetMissionByTitle(req.query.missionName);
+  console.log('mission = ' + mission);
+  res.render('testResults', { mission: mission, test: JSON.stringify(mission) });
 });
 
 module.exports = router;

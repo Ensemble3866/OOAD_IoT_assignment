@@ -69,10 +69,11 @@
       <div class="div_body">
         <div class="div_titleBox">
             <div class="alert alert-primary clearfix" role="alert">
-                <div class="float-left"><h3>#6 針對HTC ONE (Android 5.1)進行測試</h3></div>
+                <div class="float-left"><h3><%= mission.title %></h3></div>
                 <div class="float-right" id="div_time">測試時間: 2018/3/23 13:00:01</div>
             </div>
         </div>
+        <!-- <p><%= test %></p> -->
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
@@ -86,7 +87,18 @@
                 </tr>
             </thead>
             <tbody>
+                <% for (key in mission.combinations) { %>
                 <tr>
+                    <td><%= mission.combinations[key].versionList[0].name %></td>
+                    <td><%= mission.combinations[key].versionList[1].name %></td>
+                    <td><%= mission.combinations[key].versionList[2].name %></td>
+                    <td><%= mission.combinations[key].versionList[3].name %></td>
+                    <td><%= mission.combinations[key].versionList[4].name %></td>
+                    <td><i class="fas fa-check"></i><%= mission.combinations[key].result %></td>
+                    <td><a href="<%= mission.combinations[key].report %>">詳細報告</a></td>
+                </tr>
+                <% } %>
+                <!-- <tr>
                     <td>HTC ONE (Android 5.1)</td>
                     <td>4.3.2</td>
                     <td>Cube 1.01</td>
@@ -139,7 +151,7 @@
                     <td>Taiwan config</td>
                     <td><i class="fas fa-check"></i></td>
                     <td><a href="">詳細報告</a></td>
-                </tr>
+                </tr> -->
             </tbody>
             <tfoot>
                 <tr>
