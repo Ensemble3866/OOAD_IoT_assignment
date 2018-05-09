@@ -1,10 +1,18 @@
 const should = require('should');
 const TestVersion = require('../lib/testVersion');
 const TestMission = require('../lib/testMission');
+const TestMissionManager = require('../lib/testMissionManager');
 const testdata = require('./testdata');
 
 var testVersionManager = testdata.testVersionManager;
-var testMission =  testdata.testMission;
+var testMission = new TestMission("myTestMission",
+                                  testVersionManager.GetVersionByCategory("Phone"),
+                                  testVersionManager.GetVersionByCategory("App"),
+                                  testVersionManager.GetVersionByCategory("Frameware"),
+                                  testVersionManager.GetVersionByCategory("Sensor"),
+                                  testVersionManager.GetVersionByCategory("Config"));
+
+var testMissionManager = testdata.testMissionManager;
 
 describe('#TestMission', () => {
     it('Test testMission lifecycle', done => {
@@ -36,5 +44,44 @@ describe('#TestCombination', () => {
         testMission.GetCombinationByIndex(47).GetVersionByCategory("Sensor").GetName().should.equal("Thermo 1.1");
         testMission.GetCombinationByIndex(47).GetVersionByCategory("Config").GetName().should.equal("TW");
         done();
+    })
+});
+
+describe('#TestMissionManager', () => {
+    it('Test testMissionManager methods', done => {
+        var phones = new Array();
+        var apps = new Array();
+        var framewares = new Array();
+        var sensors = new Array();
+        var configs = new Array();
+        
+        phones.push(new TestVersion("iOS 10", "Phone"));
+        apps.push(new TestVersion("app 0.5", "App"));
+        framewares.push(new TestVersion("alpha", "Frameware"));
+        sensors.push(new TestVersion("Monitor1", "Sensor"));
+        configs.push(new TestVersion("CH", "Config"));
+            
+        testMissionManager.CreateMission("testOtherMission", phones, apps, framewares, sensors, configs);
+
+        var missionList =  testMissionManager.GetMissions();
+        missionList.length.should.equal(2);
+        missionList[1].GetCombinationAmount().should.equal(1);
+        missionList[1].GetCombinationByIndex(0).GetVersionByCategory("Phone").GetName().should.equal("iOS 10");
+        testMissionManager.GetMissionByTitle("testOtherMission").should.equal(missionList[1]);
+        done();
+    })
+});
+
+describe('#TestMissionManager title repeat error', () => {
+    it('Test testMissionManager error.', done => {
+        try{
+            testMissionManager.CreateMission("testMission", phones, apps, framewares, sensors, configs);
+        }
+        catch(error){
+            error.message.should.equal("Title repeat.");
+        }
+        finally{
+            done();
+        }
     })
 });
