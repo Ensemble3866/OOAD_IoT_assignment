@@ -5,6 +5,14 @@ class TestMission{
     constructor(title, PhoneVersions, appVersions, FWVersions, ChannelVersions, HWVersions){
         this.status = "inital";
         this.title = title;
+        this.startTime = new Date();
+
+        this.phoneList = PhoneVersions;
+        this.appList = appVersions;
+        this.framewareList = FWVersions;
+        this.channelList = ChannelVersions;
+        this.hardwareList = HWVersions;
+
         this.combinations = new Array();
         PhoneVersions.forEach((Phone, PhoneIndex, PhoneArray) => {
             appVersions.forEach((app, appIndex, appArray) => {
@@ -28,6 +36,10 @@ class TestMission{
 
     GetTitle(){
         return this.title;
+    }
+
+    GetStartTime(){
+        return this.startTime;
     }
 
     GetCombinationAmount(){
