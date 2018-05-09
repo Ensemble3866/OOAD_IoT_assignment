@@ -41,11 +41,14 @@ router.get('/sendTest', function(req, res, next) {
 
 /* GET historyRecord page. */
 router.get('/historyRecord', function(req, res, next) {
-  res.render('historyRecord', { title: 'Express' });
+  var missions = testdata.testMissionManager.GetMissions();
+  res.render('historyRecord', { missions: missions,test: JSON.stringify(missions) });
 });
 
 /* GET testResults page. */
 router.get('/testResults', function(req, res, next) {
+  console.log(req.body);
+  // console.log(res);
   res.render('testResults', { title: 'Express' });
 });
 

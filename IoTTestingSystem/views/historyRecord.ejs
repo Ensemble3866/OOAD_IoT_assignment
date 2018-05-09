@@ -65,72 +65,20 @@
                 </tr>
             </thead>
             <tbody>
+                <!-- <p><%= test %></p> -->
+                <% for (key in missions) { %>
                 <tr>
                     <td>#1</td>
-                    <td>初步測試(1)</td>
+                    <td><%= missions[key].title %></td>
                     <td>2018/3/23 13:00:01</td>
+                    <td></td>
                     <td>共兩項</td>
                     <td>共兩項</td>
                     <td>共兩項</td>
                     <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td><a href="testResults">60% 成功</a></td>
+                    <td><a href="testResults"><%= missions[key].status %></a></td>
                 </tr>
-                <tr>
-                    <td>#2</td>
-                    <td>初步測試(2)</td>
-                    <td>2018/3/23 13:00:20</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td><a href="testResults">40% 成功</a></td>
-                </tr>
-                <tr>
-                    <td>#3</td>
-                    <td>針對iPhone進行測試(1)</td>
-                    <td>2018/3/23 13:35:01</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>Taiwan config</td>
-                    <td><a href="testResults">20% 成功</a></td>
-                </tr>
-                <tr>
-                    <td>#4</td>
-                    <td>針對iPhone進行測試(2)</td>
-                    <td>2018/3/23 13:40:01</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>Taiwan config</td>
-                    <td><a href="testResults">60% 成功</a></td>
-                </tr>
-                <tr>
-                    <td>#5</td>
-                    <td>對新版APP 5.2進行測試</td>
-                    <td>2018/3/24 13:00:01</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td><a href="testResults">60% 成功</a></td>
-                </tr>
-                <tr>
-                    <td>#6</td>
-                    <td>日本Channel測試</td>
-                    <td>2018/3/24 15:00:01</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>共兩項</td>
-                    <td>Japan config</td>
-                    <td><a href="testResults">60% 成功</a></td>
-                </tr>
+                <% } %>
             </tbody>
             <tfoot>
                 <tr>
