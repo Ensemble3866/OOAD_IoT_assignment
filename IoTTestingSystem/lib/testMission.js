@@ -20,11 +20,11 @@ class TestMission{
                     ChannelVersions.forEach((channel, channelIndex, channelArray) => {
                         HWVersions.forEach((HW, HWIndex, HWArray) => {
                             var newCombinationList = new Array();
-                            newCombinationList.push(Phone);
-                            newCombinationList.push(app);
-                            newCombinationList.push(FW);
-                            newCombinationList.push(channel);
-                            newCombinationList.push(HW);
+                            newCombinationList.push(PhoneVersions.length > 0 ? Phone : null);
+                            newCombinationList.push(appVersions.length > 0 ? app : null);
+                            newCombinationList.push(FWVersions.length > 0 ? FW : null);
+                            newCombinationList.push(ChannelVersions.length > 0 ? channel : null);
+                            newCombinationList.push(HWVersions.length > 0 ? HW : null);
                             var newCombination = new TestCombination(newCombinationList);
                             this.combinations.push(newCombination);
                         })
