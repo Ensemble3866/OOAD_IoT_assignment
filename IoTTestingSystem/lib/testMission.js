@@ -54,6 +54,18 @@ class TestMission{
         return this.combinations[index];
     }
 
+    GetSuccessRate(){
+        var successAmount = 0;
+        var failAmount = 0;
+        this.combinations.forEach((combination) => {
+            if(combination.result)
+                successAmount++;
+            else 
+                failAmount++;
+        });
+        return successAmount / (successAmount + failAmount);
+    }
+
     StartTesting(){
         this.status = "testing";
     }
