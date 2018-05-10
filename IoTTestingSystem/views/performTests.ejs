@@ -60,7 +60,7 @@
                 </div>
                 <ul class="list-group list-group-flush">
                   <% for (index in categoryList[key].list) { %>
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox" value=""> <%= categoryList[key].list[index].name %></label></div></li>
+                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" data-category="<%= categoryList[key].list[index].category %>" type="checkbox" value="<%= categoryList[key].list[index].name %>"> <%= categoryList[key].list[index].name %></label></div></li>
                   <% } %>
                 </ul>
               </div>
@@ -75,7 +75,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="basic-addon1">測試標題</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="請輸入標題" aria-label="測試標題" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" id="missionTitle" placeholder="請輸入標題" aria-label="測試標題" aria-describedby="basic-addon1">
                   </div>
                 </div>
                 <div class="col">
@@ -89,13 +89,42 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script>
     function startTest(){
+
+      var Phone = $('input:checkbox:checked[data-category="Phone"]').map(function() { return $(this).val(); }).get();
+      console.log(Phone);
+      var App = $('input:checkbox:checked[data-category="App"]').map(function() { return $(this).val(); }).get();
+      console.log(App);
+      var Frameware = $('input:checkbox:checked[data-category="Frameware"]').map(function() { return $(this).val(); }).get();
+      console.log(Frameware);
+      var Sensor = $('input:checkbox:checked[data-category="Sensor"]').map(function() { return $(this).val(); }).get();
+      console.log(Sensor);
+      var Config = $('input:checkbox:checked[data-category="Config"]').map(function() { return $(this).val(); }).get();
+      console.log(Config);
+
+      $.ajax({
+        method: "GET",
+        contentType:"application/json; charset=utf-8",
+        dataType: "json",
+        url: "/createMission",
+        data: {
+          title: $('#missionTitle').val(),
+          phone: Phone,
+          app: App,
+          frameware: Frameware,
+          sensor: Sensor,
+          config: Config
+        }
+      });
+
       location.href= ("sendTest");
+      
     }
     </script>
 
