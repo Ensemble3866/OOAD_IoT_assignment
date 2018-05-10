@@ -111,6 +111,7 @@
       $.ajax({
         method: "GET",
         contentType:"application/json; charset=utf-8",
+        dataType: "text",
         url: "/createMission",
         data: {
           title: $('#missionTitle').val(),
@@ -120,12 +121,15 @@
           sensor: Sensor,
           config: Config
         }
-      }).done(function() {
-        location.href= ("sendTest");
+      }).done(function(msg) {
+        console.log(msg);
+        if (msg=='OK'){
+          location.href= ("sendTest");
+        }
+        else{
+          alert(msg);
+        }
       });
-
-      
-      
     }
     </script>
 

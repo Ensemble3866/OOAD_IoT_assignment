@@ -92,10 +92,11 @@ router.get('/createMission', function(req, res, next) {
     }
   }
   catch(error){
-    console.log('error');
+    res.send('有重複的標題命名！');
   }
   finally{
-    res.sendStatus(200);
+    // res.sendStatus(200);
+    res.send('OK');
   }  
 });
 
