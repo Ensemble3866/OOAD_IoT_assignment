@@ -72,6 +72,33 @@ describe('#TestMissionManager', () => {
     })
 });
 
+
+/*
+describe('#TestMissionManager', () => {
+    it('Test testMissionManager, and version\'s category less than 5.', done => {
+        var phones = new Array();
+        var apps = new Array();
+        var framewares = new Array();
+        var sensors = new Array();
+        var configs = new Array();
+        
+        apps.push(new TestVersion("app 0.5", "App"));
+        apps.push(new TestVersion("app 0.7", "App"));
+        framewares.push(new TestVersion("alpha", "Frameware"));
+        configs.push(new TestVersion("CH", "Config"));
+        configs.push(new TestVersion("US", "Config"))
+            
+        testMissionManager.CreateMission("testSmallMission", phones, apps, framewares, sensors, configs);
+
+        var missionList =  testMissionManager.GetMissions();
+        missionList.length.should.equal(3);
+        missionList[2].GetCombinationAmount().should.equal(4);
+        missionList[2].GetCombinationByIndex(0).GetVersionByCategory("Phone").GetName().should.equal("app 0.5");
+        testMissionManager.GetMissionByTitle("testSmallMission").should.equal(missionList[2]);
+        done();
+    })
+});
+*/
 describe('#TestMissionManager title repeat error', () => {
     it('Test testMissionManager error.', done => {
         try{
