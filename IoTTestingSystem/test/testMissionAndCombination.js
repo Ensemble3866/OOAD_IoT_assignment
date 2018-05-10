@@ -21,6 +21,7 @@ describe('#TestMission', () => {
         testMission.GetStatus().should.equal("inital");
         testMission.StartTesting();
         testMission.GetStatus().should.equal("testing");
+        testMission.GetSuccessRate().should.equal(0);
         done();
     })
 });
