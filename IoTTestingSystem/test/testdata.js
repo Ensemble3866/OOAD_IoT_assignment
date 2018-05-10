@@ -16,7 +16,7 @@ testVersionManager.MakeNewVersion("JP", "Config");
 testVersionManager.MakeNewVersion("TW", "Config");
 
 var testMissionManager = new TestMissionManager();
-testMissionManager.CreateMission("testMission",
+testMissionManager.CreateMission("針對所有裝置測試",
                                   testVersionManager.GetVersionByCategory("Phone"),
                                   testVersionManager.GetVersionByCategory("App"),
                                   testVersionManager.GetVersionByCategory("Frameware"),

@@ -81,30 +81,20 @@ router.get('/createMission', function(req, res, next) {
 
 
   try{
-    console.log('try');
     testdata.testMissionManager.CreateMission(req.query.title, phoneList, appList,
       framewareList, sensorList, configList);
-    // testdata.testMissionManager.CreateMission(req.query.title, req.query.phone, req.query.app,
-    //   req.query.frameware, req.query.sensor, req.query.config);
 
+    // 設定前兩筆成功以做測試
     var thisMission = testdata.testMissionManager.GetMissionByTitle(req.query.title);
     thisMission.combinations[0].result = true;
     thisMission.combinations[1].result = true;
   }
   catch(error){
-   console.log('error');
+    console.log('error');
   }
   finally{
-    console.log('finally');
     res.sendStatus(200);
   }  
 });
-
-
-// router.post('/send', async function(req, res, next) {
-//   console.log('send')
-//   console.log(req.body)
-//   res.sendStatus(200);
-// });
 
 module.exports = router;
