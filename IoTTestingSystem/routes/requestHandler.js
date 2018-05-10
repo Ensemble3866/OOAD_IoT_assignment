@@ -84,10 +84,12 @@ router.get('/createMission', function(req, res, next) {
     testdata.testMissionManager.CreateMission(req.query.title, phoneList, appList,
       framewareList, sensorList, configList);
 
-    // 設定前兩筆成功以做測試
+    // 隨機設定幾筆成功以做測試
     var thisMission = testdata.testMissionManager.GetMissionByTitle(req.query.title);
-    thisMission.combinations[0].result = true;
-    thisMission.combinations[1].result = true;
+    for (const key in thisMission.combinations) {
+      var r = Math.floor(Math.random()*(2)+0);
+      if(r==1) thisMission.combinations[key].result = true;
+    }
   }
   catch(error){
     console.log('error');

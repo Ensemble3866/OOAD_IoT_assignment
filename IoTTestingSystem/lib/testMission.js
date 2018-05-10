@@ -63,7 +63,7 @@ class TestMission{
             else 
                 failAmount++;
         });
-        return successAmount / (successAmount + failAmount);
+        return Math.round(successAmount / (successAmount + failAmount) * 100);
     }
 
     StartTesting(){

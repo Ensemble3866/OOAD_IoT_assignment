@@ -75,7 +75,7 @@
                     <td>共 <%= missions[key].framewareList.length %> 項</td>
                     <td>共 <%= missions[key].channelList.length %> 項</td>
                     <td>共 <%= missions[key].hardwareList.length %> 項</td>
-                    <td><a href="testResults?missionName=<%= missions[key].title %>"><%= missions[key].status %></a></td>
+                    <td><a href="testResults?missionName=<%= missions[key].title %>"><%= missions[key].GetSuccessRate() %> %</a></td>
                 </tr>
                 <% } %>
             </tbody>
