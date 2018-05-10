@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var testdata = require('../test/testdata');
+const TestVersion = require('../lib/TestVersion');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -55,47 +56,27 @@ router.get('/createMission', function(req, res, next) {
 
   var phoneList = new Array();
   for (const key in req.query.phone) {
-    var obj = {
-      name: req.query.phone[key],
-      category: 'Phone'
-    }
-    phoneList.push(obj);
+    phoneList.push(new TestVersion(req.query.phone[key], 'Phone'));
   }
 
   var appList = new Array();
   for (const key in req.query.app) {
-    var obj = {
-      name: req.query.app[key],
-      category: 'App'
-    }
-    appList.push(obj);
+    appList.push(new TestVersion(req.query.app[key], 'App'));
   }
 
   var framewareList = new Array();
   for (const key in req.query.frameware) {
-    var obj = {
-      name: req.query.frameware[key],
-      category: 'Frameware'
-    }
-    framewareList.push(obj);
+    framewareList.push(new TestVersion(req.query.frameware[key], 'Frameware'));
   }
 
   var sensorList = new Array();
   for (const key in req.query.sensor) {
-    var obj = {
-      name: req.query.sensor[key],
-      category: 'Sensor'
-    }
-    sensorList.push(obj);
+    sensorList.push(new TestVersion(req.query.sensor[key], 'Sensor'));
   }
 
   var configList = new Array();
   for (const key in req.query.config) {
-    var obj = {
-      name: req.query.config[key],
-      category: 'Config'
-    }
-    configList.push(obj);
+    configList.push(new TestVersion(req.query.config[key], 'Config'));
   }
 
 
