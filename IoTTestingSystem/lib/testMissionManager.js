@@ -6,14 +6,14 @@ class TestMissionManager{
         this.missionList = new Array();
     }
     
-    CreateMission(title, phones, apps, framewares, sensors, configs){
+    CreateMission(title, phones, apps, firmwares, sensors, configs){
         var result = this.missionList.find((mission, index, array) => {
             return mission.title == title;
         });
         if(result != undefined){
             throw new Error("Title repeat.");
         }
-        var newMission = new TestMission(title, phones, apps, framewares, sensors, configs);
+        var newMission = new TestMission(title, phones, apps, firmwares, sensors, configs);
         this.missionList.push(newMission);
     }
 

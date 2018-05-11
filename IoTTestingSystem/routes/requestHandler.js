@@ -50,7 +50,7 @@ router.get('/createMission', function(req, res, next) {
   console.log('title = ' + req.query.title);
   console.log('phone = ' + req.query.phone);
   console.log('app = ' + req.query.app);
-  console.log('frameware = ' + req.query.frameware);
+  console.log('firmware = ' + req.query.firmware);
   console.log('sensor = ' + req.query.sensor);
   console.log('config = ' + req.query.config);
 
@@ -64,9 +64,9 @@ router.get('/createMission', function(req, res, next) {
     appList.push(new TestVersion(req.query.app[key], 'App'));
   }
 
-  var framewareList = new Array();
-  for (const key in req.query.frameware) {
-    framewareList.push(new TestVersion(req.query.frameware[key], 'Frameware'));
+  var firmwareList = new Array();
+  for (const key in req.query.firmware) {
+    firmwareList.push(new TestVersion(req.query.firmware[key], 'Firmware'));
   }
 
   var sensorList = new Array();
@@ -82,7 +82,7 @@ router.get('/createMission', function(req, res, next) {
 
   try{
     testdata.testMissionManager.CreateMission(req.query.title, phoneList, appList,
-      framewareList, sensorList, configList);
+      firmwareList, sensorList, configList);
 
     // 隨機設定幾筆成功以做測試
     var thisMission = testdata.testMissionManager.GetMissionByTitle(req.query.title);

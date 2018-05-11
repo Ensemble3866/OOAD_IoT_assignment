@@ -9,7 +9,7 @@ class TestMission{
 
         this.phoneList = PhoneVersions;
         this.appList = appVersions;
-        this.framewareList = FWVersions;
+        this.firmwareList = FWVersions;
         this.channelList = ChannelVersions;
         this.hardwareList = HWVersions;
 

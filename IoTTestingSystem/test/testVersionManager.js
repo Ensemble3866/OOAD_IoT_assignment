@@ -10,8 +10,8 @@ describe('#TestVersionManager.GetVersion', () => {
         testVersionManager.MakeNewVersion("Android 5.01", "SmartPhone");
         testVersionManager.MakeNewVersion("Android 5.02", "SmartPhone");
         testVersionManager.MakeNewVersion("Android Oreo", "SmartPhone");
-        testVersionManager.MakeNewVersion("J", "Frameware");
-        testVersionManager.MakeNewVersion("J1", "Frameware");
+        testVersionManager.MakeNewVersion("J", "Firmware");
+        testVersionManager.MakeNewVersion("J1", "Firmware");
         testVersionManager.MakeNewVersion("Monitor 1.0", "Sensor");
         testVersionManager.MakeNewVersion("Thermo 1.1", "Sensor");
 
@@ -27,10 +27,10 @@ describe('#TestVersionManager.GetVersion', () => {
 
 describe('#TestVersionManager.GetVersionByNameAndCategory', () => {
     it('should return the attribute of Version', done => {
-        testVersionManager.GetVersionByNameAndCategory("J", "Frameware").GetName().should.equal("J");
-        testVersionManager.GetVersionByNameAndCategory("J", "Frameware").GetCategory().should.equal("Frameware");
+        testVersionManager.GetVersionByNameAndCategory("J", "Firmware").GetName().should.equal("J");
+        testVersionManager.GetVersionByNameAndCategory("J", "Firmware").GetCategory().should.equal("Firmware");
 
-        should.not.exist(testVersionManagerEmpty.GetVersionByNameAndCategory("J", "Frameware"));
+        should.not.exist(testVersionManagerEmpty.GetVersionByNameAndCategory("J", "Firmware"));
         done();
     })
 });
@@ -53,7 +53,7 @@ describe('#TestVersionManager.GetCategories', () => {
     it('should return the attribute of CategoryList', done => {
         let categoryList = testVersionManager.GetCategories();
         categoryList[0].should.equal("SmartPhone");
-        categoryList[1].should.equal("Frameware");
+        categoryList[1].should.equal("Firmware");
         categoryList[2].should.equal("Sensor");
 
         let categoryEmptyList = testVersionManagerEmpty.GetCategories();
