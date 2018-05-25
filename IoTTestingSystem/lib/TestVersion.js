@@ -3,14 +3,6 @@ class TestVersion{
         this.name = name;
         this.category = category;
     }
-
-    GetName(){
-        return this.name;
-    }
-
-    GetCategory(){
-        return this.category;
-    }
 }
 
 module.exports = TestVersion;

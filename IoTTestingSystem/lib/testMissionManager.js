@@ -1,32 +1,21 @@
 const TestMission = require("./testMission");
-var testdata = require('../test/testdata');
 
 class TestMissionManager{
     constructor(){
         this.missionList = new Array();
     }
-    
-    CreateMission(title, phones, apps, firmwares, sensors, configs){
-        var result = this.missionList.find((mission, index, array) => {
-            return mission.title == title;
-        });
-        if(result != undefined){
-            throw new Error("Title repeat.");
-        }
-        var newMission = new TestMission(title, phones, apps, firmwares, sensors, configs);
-        this.missionList.push(newMission);
-    }
 
-    GetMissions(){
-        return this.missionList;
+    CreateMission(script, testVersionManager){
+        this.missionList.push(new TestMission(script, testVersionManager));
     }
-
-    GetMissionByTitle(title){
-        var result = this.missionList.find((mission, index, array) => {
-            return mission.title == title;
+    /*
+    GetMissionByStartTime(time){
+        var script = this.scripts.find((script) => {
+            return script.name == scriptName;
         });
-        return result;
+        return script;
     }
+    */
 }
 
 module.exports = TestMissionManager;

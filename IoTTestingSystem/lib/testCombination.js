@@ -12,7 +12,7 @@ class TestCombination{
     }
 
     GetVersionByCategory(category){
-        var result = this.versionList.find((item, index, array) => {
+        var result = this.versionList.find((item) => {
             return item.category == category;
         });
         return result;
@@ -20,18 +20,10 @@ class TestCombination{
 
     GetCategories(){
         var categoryList = new Array();
-        this.versionList.forEach((version, versionIndex, versionArray) => {
-            categoryList.push(version.GetCategory());
+        this.versionList.forEach((version) => {
+            categoryList.push(version.category);
         });
         return categoryList;
-    }
-
-    GetResult(){
-        return this.result;
-    }
-
-    GetReport(){
-        return this.report;
     }
 }
 

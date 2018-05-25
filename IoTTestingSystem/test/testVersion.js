@@ -6,11 +6,11 @@ var testVersionError = new TestVersion();
 
 describe('#TestVersion', () => {
     it('should return the attribute of version', done => {
-        testVersion.GetName().should.equal("Android 5.01");
-        testVersion.GetCategory().should.equal("SmartPhone");
+        testVersion.name.should.equal("Android 5.01");
+        testVersion.category.should.equal("SmartPhone");
 
-        should.not.exist(testVersionError.GetName());
-        should.not.exist(testVersionError.GetCategory());
+        should.not.exist(testVersionError.name);
+        should.not.exist(testVersionError.name);
         done();
     })
 });

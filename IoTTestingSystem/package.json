@@ -16,7 +16,8 @@
     "babel": "^5.6.23",
     "mocha": "latest",
     "should": "latest",
-    "serve-favicon": "latest"
+    "serve-favicon": "latest",
+    "uuid": "latest"
   },
   "devDependencies": {
     "babel-preset-env": "^1.6.1",
