@@ -1,4 +1,4 @@
-var Version = require('../lib/testVersion');
+var TestVersion = require('../lib/testVersion');
 
 class TestVersionManager{
     constructor(){
@@ -6,19 +6,13 @@ class TestVersionManager{
     }
 
     MakeNewVersion(name, category){
-        var newVersion = new Version(name, category);
-        this.versionList.push(newVersion);
+        this.versionList.push(new TestVersion(name, category));
     }
 
-    GetVersionByIndex(index){
-        return this.versionList[index];
-    }
-
-    GetVersionByNameAndCategory(name, category){
-        var result = this.versionList.find((item, index, array) => {
-            return item.name == name && item.category == category;
+    MakeVersionsSameCategory(versionList, categoryName){
+        versionList.forEach((version) => {
+            this.versionList.push(new TestVersion(version, categoryName));
         });
-        return result;
     }
 
     GetVersionByCategory(category){

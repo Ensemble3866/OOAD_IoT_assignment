@@ -1,5 +1,6 @@
-const TestVersionManager = require('../lib/testVersionManager');
 const TestMission = require('../lib/testMission');
+const TestVersionManager = require('../lib/testVersionManager');
+const TestScriptManager = require('../lib/testScript');
 const TestMissionManager = require('../lib/testMissionManager');
 
 var testVersionManager = new TestVersionManager();
@@ -15,13 +16,16 @@ testVersionManager.MakeNewVersion("Thermo 1.1", "Sensor");
 testVersionManager.MakeNewVersion("JP", "Config");
 testVersionManager.MakeNewVersion("TW", "Config");
 
+var testScriptManager = new TestScriptManager();
+var parameter1 = ["Phone", "App", "Firmware", "Sensor", "Config"];
+var parameter2 = ["App"];
+var parameter3 = ["Phone", "App"];
+testScriptManager.CreateScript("整合測試", parameter1);
+testScriptManager.CreateScript("App單元測試", parameter2);
+testScriptManager.CreateScript("App安裝測試", parameter3);
+
 var testMissionManager = new TestMissionManager();
-testMissionManager.CreateMission("針對所有裝置測試",
-                                  testVersionManager.GetVersionByCategory("Phone"),
-                                  testVersionManager.GetVersionByCategory("App"),
-                                  testVersionManager.GetVersionByCategory("Firmware"),
-                                  testVersionManager.GetVersionByCategory("Sensor"),
-                                  testVersionManager.GetVersionByCategory("Config"));
 
 exports.testVersionManager = testVersionManager;
+exports.testScriptManager = testScriptManager;
 exports.testMissionManager = testMissionManager;

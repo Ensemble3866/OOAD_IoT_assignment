@@ -3,6 +3,7 @@ var router = express.Router();
 
 var testdata = require('../test/testdata');
 const TestVersion = require('../lib/TestVersion');
+const TestVersionManager = require('../lib/TestVersionManager');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -32,7 +33,7 @@ router.get('/sendTest', function(req, res, next) {
 
 /* GET historyRecord page. */
 router.get('/historyRecord', function(req, res, next) {
-  var missions = testdata.testMissionManager.GetMissions();
+  var missions = testdata.testMissionManager.missionList;
   res.render('historyRecord', { missions: missions });
 });
 
@@ -54,45 +55,25 @@ router.get('/createMission', function(req, res, next) {
   console.log('sensor = ' + req.query.sensor);
   console.log('config = ' + req.query.config);
 
-  var phoneList = new Array();
-  for (const key in req.query.phone) {
-    phoneList.push(new TestVersion(req.query.phone[key], 'Phone'));
-  }
-
-  var appList = new Array();
-  for (const key in req.query.app) {
-    appList.push(new TestVersion(req.query.app[key], 'App'));
-  }
-
-  var firmwareList = new Array();
-  for (const key in req.query.firmware) {
-    firmwareList.push(new TestVersion(req.query.firmware[key], 'Firmware'));
-  }
-
-  var sensorList = new Array();
-  for (const key in req.query.sensor) {
-    sensorList.push(new TestVersion(req.query.sensor[key], 'Sensor'));
-  }
-
-  var configList = new Array();
-  for (const key in req.query.config) {
-    configList.push(new TestVersion(req.query.config[key], 'Config'));
-  }
-
+  var testVersionManager = new TestVersionManager();
+  testVersionManager.MakeVersionsSameCategory(req.query.phone, 'Phone');
+  testVersionManager.MakeVersionsSameCategory(req.query.app, 'App');
+  testVersionManager.MakeVersionsSameCategory(req.query.firmware, 'Firmware');
+  testVersionManager.MakeVersionsSameCategory(req.query.sensor, 'Sensor');
+  testVersionManager.MakeVersionsSameCategory(req.query.config, 'Config');
 
   try{
-    testdata.testMissionManager.CreateMission(req.query.title, phoneList, appList,
-      firmwareList, sensorList, configList);
+    testdata.testMissionManager.CreateMission(testdata.testScriptManager.GetScrictByName("整合測試"), testVersionManager);
 
     // 隨機設定幾筆成功以做測試
-    var thisMission = testdata.testMissionManager.GetMissionByTitle(req.query.title);
+    var thisMission = testdata.testMissionManager.missionList[testdata.testMissionManager.missionList.length - 1];
     for (const key in thisMission.combinations) {
       var r = Math.floor(Math.random()*(2)+0);
       if(r==1) thisMission.combinations[key].result = true;
     }
   }
   catch(error){
-    res.send('有重複的標題命名！');
+    res.send(error.massage);
   }
   finally{
     // res.sendStatus(200);

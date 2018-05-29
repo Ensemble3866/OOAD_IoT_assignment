@@ -1,53 +1,45 @@
 const should = require('should');
-const TestVersion = require('../lib/testVersion');
-const TestMission = require('../lib/testMission');
+const TestVersionManager = require('../lib/testVersionManager');
 const TestMissionManager = require('../lib/testMissionManager');
 const testdata = require('./testdata');
 
 var testVersionManager = testdata.testVersionManager;
-var testMission = new TestMission("myTestMission",
-                                  testVersionManager.GetVersionByCategory("Phone"),
-                                  testVersionManager.GetVersionByCategory("App"),
-                                  testVersionManager.GetVersionByCategory("Firmware"),
-                                  testVersionManager.GetVersionByCategory("Sensor"),
-                                  testVersionManager.GetVersionByCategory("Config"));
+var testScriptManager = testdata.testScriptManager;
 
-var testMissionManager = testdata.testMissionManager;
+var testVersionManager2 = new TestVersionManager();
+testVersionManager.MakeNewVersion("Android 5.01", "Phone");
+testVersionManager.MakeNewVersion("Android 5.02", "Phone");
+testVersionManager.MakeNewVersion("MyApp 1.00", "App");
+testVersionManager.MakeNewVersion("MyApp Beta", "App");
 
-describe('#TestMission', () => {
-    it('Test testMission lifecycle', done => {
-        testMission.GetTitle().should.equal("myTestMission");
-        testMission.GetCombinationAmount().should.equal(48);
-        testMission.GetStatus().should.equal("inital");
-        testMission.StartTesting();
-        testMission.GetStatus().should.equal("testing");
-        testMission.GetSuccessRate().should.equal(0);
-        done();
-    })
-});
-                
-describe('#TestCombination', () => {
-    it('Test testCombination function', done => {
-        let categories = testMission.GetCombinationByIndex(0).GetCategories();
-        categories[0].should.equal("Phone");
-        categories[1].should.equal("App");
-        categories[2].should.equal("Firmware");
-        categories[3].should.equal("Sensor");
-        categories[4].should.equal("Config");
-        testMission.GetCombinationByIndex(0).GetVersionByCategory("Phone").GetName().should.equal("Android 5.01");
-        testMission.GetCombinationByIndex(0).GetVersionByCategory("App").GetName().should.equal("MyApp 1.00");
-        testMission.GetCombinationByIndex(0).GetVersionByCategory("Firmware").GetName().should.equal("J");
-        testMission.GetCombinationByIndex(0).GetVersionByCategory("Sensor").GetName().should.equal("Monitor 1.0");
-        testMission.GetCombinationByIndex(0).GetVersionByCategory("Config").GetName().should.equal("JP");
-        testMission.GetCombinationByIndex(47).GetVersionByCategory("Phone").GetName().should.equal("Android Oreo");
-        testMission.GetCombinationByIndex(47).GetVersionByCategory("App").GetName().should.equal("MyApp Beta");
-        testMission.GetCombinationByIndex(47).GetVersionByCategory("Firmware").GetName().should.equal("J1");
-        testMission.GetCombinationByIndex(47).GetVersionByCategory("Sensor").GetName().should.equal("Thermo 1.1");
-        testMission.GetCombinationByIndex(47).GetVersionByCategory("Config").GetName().should.equal("TW");
+var testVersionManager3 = new TestVersionManager();
+testVersionManager.MakeNewVersion("Android 5.01", "Phone");
+testVersionManager.MakeNewVersion("Android 5.02", "Phone");
+
+var testVersionManager4 = new TestVersionManager();
+testVersionManager.MakeNewVersion("Android 5.01", "Phone");
+testVersionManager.MakeNewVersion("Android 5.02", "Phone");
+testVersionManager.MakeNewVersion("Monitor 1.0", "Sensor");
+testVersionManager.MakeNewVersion("Thermo 1.1", "Sensor");
+
+describe('#TestMissionManager', () => {
+    it('TestMissionManager.CreateMission', done => {
+        var testMissionManager = new TestMissionManager();
+        testMissionManager.CreateMission(testScriptManager.scripts[0], testVersionManager);
+        testMissionManager.missionList.length.should.equal(1);
         done();
     })
 });
 
+describe('#TestMissionManager', () => {
+    it('TestMissionManager.CreateMission', done => {
+        var testMissionManager = new TestMissionManager();
+        testMissionManager.CreateMission(testScriptManager.scripts[0], testVersionManager);
+        testMissionManager.missionList.length.should.equal(1);
+        done();
+    })
+});
+/*
 describe('#TestMissionManager', () => {
     it('Test testMissionManager methods', done => {
         var phones = new Array();
@@ -73,8 +65,6 @@ describe('#TestMissionManager', () => {
     })
 });
 
-
-/*
 describe('#TestMissionManager', () => {
     it('Test testMissionManager, and version\'s category less than 5.', done => {
         var phones = new Array();
@@ -99,7 +89,7 @@ describe('#TestMissionManager', () => {
         done();
     })
 });
-*/
+
 describe('#TestMissionManager title repeat error', () => {
     it('Test testMissionManager error.', done => {
         try{
@@ -113,3 +103,4 @@ describe('#TestMissionManager title repeat error', () => {
         }
     })
 });
+*/
