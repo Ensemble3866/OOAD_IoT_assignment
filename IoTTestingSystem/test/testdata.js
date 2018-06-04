@@ -1,9 +1,9 @@
-const TestMission = require('../lib/testMission');
-const TestVersionManager = require('../lib/testVersionManager');
-const TestScriptManager = require('../lib/testScript');
-const TestMissionManager = require('../lib/testMissionManager');
+var TestMission = require('../lib/testMission');
+var testVersionManager = require('../lib/testVersionManager');
+var TestScriptManager = require('../lib/testScriptManager');
+var TestMissionManager = require('../lib/testMissionManager');
 
-var testVersionManager = new TestVersionManager();
+var testVersionManager = new testVersionManager();
 testVersionManager.MakeNewVersion("Android 5.01", "Phone");
 testVersionManager.MakeNewVersion("Android 5.02", "Phone");
 testVersionManager.MakeNewVersion("Android Oreo", "Phone");
@@ -16,13 +16,14 @@ testVersionManager.MakeNewVersion("Thermo 1.1", "Sensor");
 testVersionManager.MakeNewVersion("JP", "Config");
 testVersionManager.MakeNewVersion("TW", "Config");
 
+
 var testScriptManager = new TestScriptManager();
 var parameter1 = ["Phone", "App", "Firmware", "Sensor", "Config"];
 var parameter2 = ["App"];
 var parameter3 = ["Phone", "App"];
-testScriptManager.CreateScript("整合測試", parameter1);
-testScriptManager.CreateScript("App單元測試", parameter2);
-testScriptManager.CreateScript("App安裝測試", parameter3);
+testScriptManager.CreateScript("FullTest", parameter1);
+testScriptManager.CreateScript("AppUnitTest", parameter2);
+testScriptManager.CreateScript("AppInstallTest", parameter3);
 
 var testMissionManager = new TestMissionManager();
 

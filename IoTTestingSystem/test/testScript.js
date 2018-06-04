@@ -1,7 +1,8 @@
 const should = require('should');
 const TestScript = require('../lib/testScript');
+const TestScriptManager = require('../lib/testScriptManager');
 
-var testScript = new TestScript();
+var testScript = new TestScriptManager();
 
 describe('#TestVersion', () => {
     it('should return the attribute of version', done => {

@@ -5,12 +5,12 @@ const testdata = require('./testdata');
 var testVersionManager = testdata.testVersionManager;
 var testScriptManager = testdata.testScriptManager;
 
-var testMission = new TestMission(testScriptManager.GetScrictByName("整合測試"), testVersionManager);
+var testMission = new TestMission(testScriptManager.GetScrictByName("FullTest"), testVersionManager);
 
 describe('#TestMission #TestCombination', () => {
     it('Test testMission lifecycle', done => {
         testMission.status.should.equal("inital");
-        testMission.script.name.should.equal("整合測試");
+        testMission.script.name.should.equal("FullTest");
         testMission.combinations.length.should.equal(48);
         let categories = testMission.combinations[0].GetCategories();
         categories[0].should.equal("Phone");

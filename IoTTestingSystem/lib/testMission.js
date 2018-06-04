@@ -1,4 +1,6 @@
+const request = require('request');
 const uuidv1 = require('uuid/v1');
+const fs = require('fs');
 const TestCombination = require('../lib/testCombination');
 
 class TestMission{
@@ -18,6 +20,7 @@ class TestMission{
         this.id = uuidv1();
         this.script = script;
         this.versions = testVersionManager;
+        this.report = null;
         this.startTime = new Date();
         this.combinations = new Array();
  
@@ -63,10 +66,30 @@ class TestMission{
 
     StartTesting(){
         this.status = "testing";
+        this.report = this.script.name + '_' +  Date.now().toString();
+        request('http://ensemble:3866@localhost:8080/job/FullTest/buildWithParameters?token=iottestingsystem&repoName=' 
+        + this.report + '&testAmount=' + this.combinations.length, 
+            function (error, response, body) {
+                console.log('error:', error);
+                console.log('statusCode:', response && response.statusCode);
+        });
     }
 
-    ReciveResult(resultList){
-        resultList.forEach((result, resultIndex, resultArray) => {
+    UpdateResult(){
+        var combinationIndex = 0;
+        var robotframeworkReport = fs.readFileSync("IoTTestingSystem/RFRepo/" + this.report);
+        robotframeworkReport.split(/\r?\n/).forEach(function(line){
+            if(line == "true"){
+                this.combinations[combinationIndex].result = true;
+            }
+            else{
+                this.combinations[combinationIndex].result = false;
+            }
+            this.combinations[combinationIndex].report = "IoTTestingSystem/RFRepo/" + this.report + ".txt";
+            combinationIndex = combinationIndex + 1;
+        });
+        
+        this.combinations.forEach((combination) => {
 
         });
     }

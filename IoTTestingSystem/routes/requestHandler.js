@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-var testdata = require('../test/testdata');
-const TestVersion = require('../lib/TestVersion');
 const TestVersionManager = require('../lib/TestVersionManager');
+const TestVersion = require('../lib/TestVersion');
+
+var testdata = require('../test/testdata');
+var repository = require('../lib/repository');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -12,13 +14,13 @@ router.get('/', function(req, res, next) {
 
 /* GET performTests page. */
 router.get('/performTests', function(req, res, next) {
-  var categories = testdata.testVersionManager.GetCategories();
+  var categories = repository.testVersionRepository .GetCategories();
 
   var categoryList = new Array();
-  for (const key in categories) {
+  for (const key in categories){
     var obj = {
       category: categories[key],
-      list: testdata.testVersionManager.GetVersionByCategory(categories[key])
+      list: repository.testVersionRepository.GetVersionByCategory(categories[key])
     }
     categoryList.push(obj);
   }
