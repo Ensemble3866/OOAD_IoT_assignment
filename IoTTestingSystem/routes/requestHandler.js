@@ -14,8 +14,16 @@ router.get('/', function(req, res, next) {
 
 /* GET performTests page. */
 router.get('/performTests', function(req, res, next) {
-  var categories = repository.testVersionRepository .GetCategories();
 
+  var scripts = repository.testScriptRepository.scripts;
+  var scriptList = new Array();
+  for (const key in scripts){
+    scriptList.push(scripts[key].name);
+  }
+  // console.log(scripts);
+  // console.log(scriptList);
+
+  var categories = repository.testVersionRepository.GetCategories();
   var categoryList = new Array();
   for (const key in categories){
     var obj = {
@@ -25,7 +33,25 @@ router.get('/performTests', function(req, res, next) {
     categoryList.push(obj);
   }
   
-  res.render('performTests', { categoryList: categoryList });
+  res.render('performTests', { categoryList: categoryList, scriptList: scriptList });
+});
+
+/* GET getScriptByName. */
+router.get('/getScriptByName', function(req, res, next) {
+  console.log('scriptName = ' + req.query.scriptName);
+  var script = repository.testScriptRepository.GetScrictByName(req.query.scriptName);
+  console.log('parameters = ' + script.parameters);
+
+  var categoryList = new Array();
+  for (const key in script.parameters){
+    var obj = {
+      category: script.parameters[key],
+      list: repository.testVersionRepository.GetVersionByCategory(script.parameters[key])
+    }
+    categoryList.push(obj);
+  }
+
+  res.send(categoryList);
 });
 
 /* GET sendTest page. */

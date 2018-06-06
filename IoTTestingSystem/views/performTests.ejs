@@ -15,8 +15,12 @@
           max-width: 1500px;
           margin: 0 auto;
       }
-      .div_foot{
+      .div_head{
         max-width: 700px;
+        margin: 20px auto;
+      }
+      .div_foot{
+        max-width: 300px;
         margin: 20px auto;
       }
       .form-check{
@@ -51,7 +55,14 @@
     </header>
     <div class="container-fluid">
       <div class="div_body">
-          <div class="row">
+          <div class="div_head">
+            <select class="form-control" id="script" onchange="showVersion()">
+              <% for (key in scriptList) { %>
+                <option value="<%= scriptList[key] %>"><%= scriptList[key] %></option>
+              <% } %>
+            </select>
+          </div>
+          <div class="row" id="div_categoryList">
             <% for (key in categoryList) { %>
             <div class="col-sm">
               <div class="card">
@@ -69,19 +80,7 @@
           </div>
           <hr>
           <div class="div_foot">
-              <div class="row">
-                <div class="col-9">
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon1">測試標題</span>
-                    </div>
-                    <input type="text" class="form-control" id="missionTitle" placeholder="請輸入標題" aria-label="測試標題" aria-describedby="basic-addon1">
-                  </div>
-                </div>
-                <div class="col">
-                  <button type="button" class="btn btn-primary btn-block" onclick="startTest()">開始測試</button>
-                </div>
-              </div>
+              <button type="button" class="btn btn-primary btn-block" onclick="startTest()">開始測試</button>
           </div>
       </div>
     </div>
@@ -95,8 +94,32 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script>
-    function startTest(){
+    // 顯示Version
+    function showVersion(){
+      $.ajax({
+        method: "GET",
+        contentType:"application/json; charset=utf-8",
+        dataType: "json",
+        url: "/getScriptByName",
+        data: {
+          scriptName: $('#script').val()
+        }
+      }).done(function(jsonData) {
+        console.log(jsonData);
+        $('#div_categoryList').empty();
+        for (const key in jsonData){
+          var div_c = '<div class="col-sm"><div class="card"><div class="card-header">'+jsonData[key].category+'</div><ul class="list-group list-group-flush">';
+          for (const index in jsonData[key].list){
+            div_c += '<li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" data-category="'+ jsonData[key].category +'" type="checkbox" value="'+ jsonData[key].list[index].name +'"> '+ jsonData[key].list[index].name +'</label></div></li>';
+          }
+          div_c += '</ul></div></div>';
+          $('#div_categoryList').append(div_c);
+        }
+      });
+    }
 
+    // 開始測試
+    function startTest(){
       var Phone = $('input:checkbox:checked[data-category="Phone"]').map(function() { return $(this).val(); }).get();
       console.log(Phone);
       var App = $('input:checkbox:checked[data-category="App"]').map(function() { return $(this).val(); }).get();
@@ -131,6 +154,11 @@
         }
       });
     }
+
+    // 初始化
+    $(function(){
+      showVersion();
+    });
     </script>
 
     <!-- jQuery -->
