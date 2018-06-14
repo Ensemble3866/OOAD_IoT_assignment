@@ -76,7 +76,7 @@ router.get('/testResults', function(req, res, next) {
 /* GET createMission. */
 router.get('/createMission', function(req, res, next) {
   // console.log('query = ' + JSON.stringify(req.query));
-  console.log('title = ' + req.query.title);
+  console.log('script = ' + req.query.script);
   console.log('phone = ' + req.query.phone);
   console.log('app = ' + req.query.app);
   console.log('firmware = ' + req.query.firmware);
@@ -91,7 +91,7 @@ router.get('/createMission', function(req, res, next) {
   testVersionManager.MakeVersionsSameCategory(req.query.config, 'Config');
 
   try{
-    testdata.testMissionManager.CreateMission(testdata.testScriptManager.GetScrictByName("整合測試"), testVersionManager);
+    testdata.testMissionManager.CreateMission(testdata.testScriptManager.GetScrictByName(req.query.script), testVersionManager);
 
     // 隨機設定幾筆成功以做測試
     var thisMission = testdata.testMissionManager.missionList[testdata.testMissionManager.missionList.length - 1];
