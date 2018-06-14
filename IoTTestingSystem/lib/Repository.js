@@ -35,9 +35,9 @@ TestVersionRef.once("value", function(snapshot){
 var TestScriptRef = database.ref("TestScript/");
 TestScriptRef.once("value", function(snapshot){
     let list = snapshot.val();
-    var parameterList = new Array();
     for(let script in list){
         let parameters = list[script].parameters.split(",");
+        let parameterList = new Array();
         for(let index in parameters){
             parameterList.push(parameters[index]);
         }
