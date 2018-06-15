@@ -75,22 +75,18 @@ class TestMission{
         });
     }
 
-    UpdateResult(){
+    ReceiveResult(){
+        var thisMission = this;
         var combinationIndex = 0;
-        var robotframeworkReport = fs.readFileSync("IoTTestingSystem/RFRepo/" + this.report);
+        var robotframeworkReport = fs.readFileSync("IoTTestingSystem/RFRepo/" + this.report + ".txt", "utf-8");
         robotframeworkReport.split(/\r?\n/).forEach(function(line){
             if(line == "true"){
-                this.combinations[combinationIndex].result = true;
+                thisMission.combinations[combinationIndex].UpdateResult(true, "IoTTestingSystem/RFRepo/" + thisMission.report + ".txt");
             }
-            else{
-                this.combinations[combinationIndex].result = false;
+            else if(line == "false"){
+                thisMission.combinations[combinationIndex].UpdateResult(false, "IoTTestingSystem/RFRepo/" + thisMission.report + ".txt");
             }
-            this.combinations[combinationIndex].report = "IoTTestingSystem/RFRepo/" + this.report + ".txt";
             combinationIndex = combinationIndex + 1;
-        });
-        
-        this.combinations.forEach((combination) => {
-
         });
     }
     

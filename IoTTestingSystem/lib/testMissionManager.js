@@ -6,7 +6,9 @@ class TestMissionManager{
     }
 
     CreateMission(script, testVersionManager){
-        this.missionList.push(new TestMission(script, testVersionManager));
+        var newTestMission = new TestMission(script, testVersionManager);
+        this.missionList.push(newTestMission);
+        return newTestMission;
     }
     /*
     GetMissionByStartTime(time){

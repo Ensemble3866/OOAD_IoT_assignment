@@ -61,14 +61,14 @@ router.get('/sendTest', function(req, res, next) {
 
 /* GET historyRecord page. */
 router.get('/historyRecord', function(req, res, next) {
-  var missions = testdata.testMissionManager.missionList;
+  var missions = repository.testMissionManager.missionList;
   res.render('historyRecord', { missions: missions });
 });
 
 /* GET testResults page. */
 router.get('/testResults', function(req, res, next) {
   console.log('missionName = ' + req.query.missionName);
-  var mission = testdata.testMissionManager.GetMissionByTitle(req.query.missionName);
+  var mission = repository.testMissionRepository.GetMissionByTitle(req.query.missionName);
   console.log('mission = ' + mission);
   res.render('testResults', { mission: mission, test: JSON.stringify(mission) });
 });
@@ -83,22 +83,24 @@ router.get('/createMission', function(req, res, next) {
   console.log('sensor = ' + req.query.sensor);
   console.log('config = ' + req.query.config);
 
-  var testVersionManager = new TestVersionManager();
-  testVersionManager.MakeVersionsSameCategory(req.query.phone, 'Phone');
-  testVersionManager.MakeVersionsSameCategory(req.query.app, 'App');
-  testVersionManager.MakeVersionsSameCategory(req.query.firmware, 'Firmware');
-  testVersionManager.MakeVersionsSameCategory(req.query.sensor, 'Sensor');
-  testVersionManager.MakeVersionsSameCategory(req.query.config, 'Config');
+  var testVersionGroup = new TestVersionManager();
+  testVersionGroup.MakeVersionsSameCategory(req.query.phone, 'Phone');
+  testVersionGroup.MakeVersionsSameCategory(req.query.app, 'App');
+  testVersionGroup.MakeVersionsSameCategory(req.query.firmware, 'Firmware');
+  testVersionGroup.MakeVersionsSameCategory(req.query.sensor, 'Sensor');
+  testVersionGroup.MakeVersionsSameCategory(req.query.config, 'Config');
 
   try{
-    testdata.testMissionManager.CreateMission(testdata.testScriptManager.GetScrictByName(req.query.script), testVersionManager);
-
+    var mission = repository.testMissionRepository.CreateMission(repository.testScriptRepository.GetScrictByName(req.query.script), testVersionGroup);
+    mission.StartTesting();
+    /*
     // 隨機設定幾筆成功以做測試
     var thisMission = testdata.testMissionManager.missionList[testdata.testMissionManager.missionList.length - 1];
     for (const key in thisMission.combinations) {
       var r = Math.floor(Math.random()*(2)+0);
       if(r==1) thisMission.combinations[key].result = true;
     }
+    */
   }
   catch(error){
     res.send(error.massage);
