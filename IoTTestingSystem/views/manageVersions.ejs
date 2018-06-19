@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <title>IoT相容性測試系統</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/main_style.css">
+    <style>
+      .div_body{
+          padding: 20px 0;
+          max-width: 1500px;
+          margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="performTests">TS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="performTests">執行測試</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="historyRecord">歷史紀錄</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="manageVersions">管理版本 <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <span class="navbar-text">林亮勳(開發人員)</span>
+          <button type="button" class="btn btn-light" onclick="logout()">登出</button>
+        </div>
+      </nav>
+      <div class="div_headImg">
+        <img src="/images/bg2.jpg" alt="image">
+      </div>
+    </header>
+    <div class="container-fluid">
+      <div class="div_body">
+        <div class="row">
+            <div class="col-3">
+              <div class="list-group" id="list-tab" role="tablist">
+                <% for (key in categoryList) { %>
+                    <a class="list-group-item list-group-item-action" id="list-<%= categoryList[key].category %>-list" data-toggle="list" href="#list-<%= categoryList[key].category %>" role="tab" aria-controls="<%= categoryList[key].category %>"><%= categoryList[key].category %></a>
+                <% } %>
+                <!-- <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+                <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+                <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+                <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a> -->
+              </div>
+            </div>
+            <div class="col-9">
+              <div class="tab-content" id="nav-tabContent">
+                <% for (key in categoryList) { %>
+                    <div class="tab-pane fade" id="list-<%= categoryList[key].category %>" role="tabpanel" aria-labelledby="list-<%= categoryList[key].category %>-list">
+                        <table class="table table-bordered">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">名稱</th>
+                                    <th scope="col">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for (index in categoryList[key].list) { %>
+                                <tr>
+                                    <td style="width: 80%;" class="align-middle"><%= categoryList[key].list[index].name %></td>
+                                    <td style="width: 20%;"><button type="button" class="btn btn-danger">刪除</button></td>
+                                </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="請輸入新版本名稱" aria-label="請輸入新版本名稱" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">新增版本</button>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+                <!-- <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
+                <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
+                <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
+                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div> -->
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+    
+    </script>
+
+    <!-- jQuery -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+    <!-- <script src="js/params.js"></script>
+    <script src="js/server.js"></script> -->
+  </body>
+</html>

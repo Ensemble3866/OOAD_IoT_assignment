@@ -44,6 +44,9 @@
             <li class="nav-item">
               <a class="nav-link" href="historyRecord">歷史紀錄</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="manageVersions">管理版本</a>
+            </li>
           </ul>
           <span class="navbar-text">林亮勳(開發人員)</span>
           <button type="button" class="btn btn-light" onclick="logout()">登出</button>
@@ -63,20 +66,7 @@
             </select>
           </div>
           <div class="row" id="div_categoryList">
-            <% for (key in categoryList) { %>
-            <div class="col-sm">
-              <div class="card">
-                <div class="card-header">
-                  <%= categoryList[key].category %>
-                </div>
-                <ul class="list-group list-group-flush">
-                  <% for (index in categoryList[key].list) { %>
-                  <li class="list-group-item"><div class="form-check"><label class="form-check-label"><input class="form-check-input" data-category="<%= categoryList[key].list[index].category %>" type="checkbox" value="<%= categoryList[key].list[index].name %>"> <%= categoryList[key].list[index].name %></label></div></li>
-                  <% } %>
-                </ul>
-              </div>
-            </div>
-            <% } %>
+            <!-- categoryList -->
           </div>
           <hr>
           <div class="div_foot">

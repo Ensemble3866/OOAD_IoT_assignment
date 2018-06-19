@@ -14,26 +14,12 @@ router.get('/', function(req, res, next) {
 
 /* GET performTests page. */
 router.get('/performTests', function(req, res, next) {
-
   var scripts = repository.testScriptRepository.scripts;
   var scriptList = new Array();
   for (const key in scripts){
     scriptList.push(scripts[key].name);
   }
-  // console.log(scripts);
-  // console.log(scriptList);
-
-  var categories = repository.testVersionRepository.GetCategories();
-  var categoryList = new Array();
-  for (const key in categories){
-    var obj = {
-      category: categories[key],
-      list: repository.testVersionRepository.GetVersionByCategory(categories[key])
-    }
-    categoryList.push(obj);
-  }
-  
-  res.render('performTests', { categoryList: categoryList, scriptList: scriptList });
+  res.render('performTests', { scriptList: scriptList });
 });
 
 /* GET getScriptByName. */
@@ -76,12 +62,12 @@ router.get('/testResults', function(req, res, next) {
 /* GET createMission. */
 router.get('/createMission', function(req, res, next) {
   // console.log('query = ' + JSON.stringify(req.query));
-  console.log('script = ' + req.query.script);
-  console.log('phone = ' + req.query.phone);
-  console.log('app = ' + req.query.app);
-  console.log('firmware = ' + req.query.firmware);
-  console.log('sensor = ' + req.query.sensor);
-  console.log('config = ' + req.query.config);
+  // console.log('script = ' + req.query.script);
+  // console.log('phone = ' + req.query.phone);
+  // console.log('app = ' + req.query.app);
+  // console.log('firmware = ' + req.query.firmware);
+  // console.log('sensor = ' + req.query.sensor);
+  // console.log('config = ' + req.query.config);
 
   var testVersionGroup = new TestVersionManager();
   testVersionGroup.MakeVersionsSameCategory(req.query.phone, 'Phone');
@@ -90,8 +76,12 @@ router.get('/createMission', function(req, res, next) {
   testVersionGroup.MakeVersionsSameCategory(req.query.sensor, 'Sensor');
   testVersionGroup.MakeVersionsSameCategory(req.query.config, 'Config');
 
+  console.log(testVersionGroup);
+
   try{
     var mission = repository.testMissionRepository.CreateMission(repository.testScriptRepository.GetScrictByName(req.query.script), testVersionGroup);
+    console.log("----------mission----------");
+    console.log(mission);
     mission.StartTesting();
     /*
     // 隨機設定幾筆成功以做測試
@@ -109,6 +99,22 @@ router.get('/createMission', function(req, res, next) {
     // res.sendStatus(200);
     res.send('OK');
   }  
+});
+
+/* GET manageVersions page. */
+router.get('/manageVersions', function(req, res, next) {
+  var categories = repository.testVersionRepository.GetCategories();
+  var categoryList = new Array();
+  for (const key in categories){
+    var obj = {
+      category: categories[key],
+      list: repository.testVersionRepository.GetVersionByCategory(categories[key])
+    }
+    categoryList.push(obj);
+  }
+  console.log("-------categoryList----------");
+  console.log(categoryList);
+  res.render('manageVersions', { categoryList: categoryList });
 });
 
 module.exports = router;
