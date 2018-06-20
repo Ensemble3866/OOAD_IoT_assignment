@@ -39,6 +39,9 @@
             <li class="nav-item active">
               <a class="nav-link" href="historyRecord">歷史紀錄 <span class="sr-only">(current)</span></a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="manageVersions">管理版本</a>
+            </li>
           </ul>
           <span class="navbar-text">林亮勳(開發人員)</span>
           <button type="button" class="btn btn-light" onclick="logout()">登出</button>
@@ -53,42 +56,27 @@
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
-                    <th>測試編號</th>
-                    <th>測試標題</th>
+                    <th>測試腳本</th>
                     <th>測試時間</th>
-                    <th>手機版本</th>
-                    <th>APP版本</th>
-                    <th>韌體版本</th>
-                    <th>感測器版本</th>
-                    <th>頻道設定</th>
+                    <th>配對數量</th>
                     <th>測試結果</th>
                 </tr>
             </thead>
             <tbody>
                 <% for (key in missions) { %>
                 <tr>
-                    <td>#1</td>
-                    <td><%= missions[key].title %></td>
+                    <td><%= missions[key].script.name %></td>
                     <td><%= missions[key].startTime %></td>
-                    <td>共 <%= missions[key].phoneList.length %> 項</td>
-                    <td>共 <%= missions[key].appList.length %> 項</td>
-                    <td>共 <%= missions[key].firmwareList.length %> 項</td>
-                    <td>共 <%= missions[key].channelList.length %> 項</td>
-                    <td>共 <%= missions[key].hardwareList.length %> 項</td>
-                    <td><a href="testResults?missionName=<%= missions[key].title %>"><%= missions[key].GetSuccessRate() %> %</a></td>
+                    <td><a href="testResults?missionId=<%= missions[key].id %>">共 <%= missions[key].combinations.length %> 項</a></td>
+                    <td><%= missions[key].GetSuccessRate() %> %</td>
                 </tr>
                 <% } %>
             </tbody>
             <tfoot>
                 <tr>
-                    <th>測試編號</th>
-                    <th>測試標題</th>
+                    <th>測試腳本</th>
                     <th>測試時間</th>
-                    <th>手機版本</th>
-                    <th>APP版本</th>
-                    <th>韌體版本</th>
-                    <th>感測器版本</th>
-                    <th>頻道設定</th>
+                    <th>配對數量</th>
                     <th>測試結果</th>
                 </tr>
             </tfoot>

@@ -82,7 +82,7 @@
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="請輸入新版本名稱" aria-label="請輸入新版本名稱" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">新增版本</button>
+                                <button class="btn btn-outline-secondary" type="button" onclick="addVersion(this,'<%= categoryList[key].category %>')">新增版本</button>
                             </div>
                         </div>
                     </div>
@@ -106,7 +106,34 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script>
-    
+    // 初始化
+    $(function(){
+      $('#list-tab a:first-child').tab('show');
+    });
+
+    // 新增版本
+    function addVersion(e,category){
+      var version = $(e).parents('.input-group').find('.form-control').val();
+      $.ajax({
+        method: "GET",
+        contentType:"application/json; charset=utf-8",
+        dataType: "text",
+        url: "/MakeNewVersion",
+        data: {
+          versionName: version,
+          categoryName: category
+        }
+      }).done(function(msg) {
+        console.log(msg);
+        if (msg=='OK'){
+          alert("新增版本成功");
+          location.href= ("manageVersions");
+        }
+        else{
+          alert(msg);
+        }
+      });
+    }
     </script>
 
     <!-- jQuery -->

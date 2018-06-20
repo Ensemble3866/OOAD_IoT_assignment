@@ -109,17 +109,16 @@
     }
 
     // 開始測試
-    function startTest(){
-      var Phone = $('input:checkbox:checked[data-category="Phone"]').map(function() { return $(this).val(); }).get();
-      console.log(Phone);
-      var App = $('input:checkbox:checked[data-category="App"]').map(function() { return $(this).val(); }).get();
-      console.log(App);
-      var Firmware = $('input:checkbox:checked[data-category="Firmware"]').map(function() { return $(this).val(); }).get();
-      console.log(Firmware);
-      var Sensor = $('input:checkbox:checked[data-category="Sensor"]').map(function() { return $(this).val(); }).get();
-      console.log(Sensor);
-      var Config = $('input:checkbox:checked[data-category="Config"]').map(function() { return $(this).val(); }).get();
-      console.log(Config);
+    function startTest(){      
+      var versions = new Array();
+      $('input:checkbox:checked[class="form-check-input"]').each(function(i) {
+        var obj = {
+          versionName: this.value,
+          categoryName: $(this).attr("data-category")
+        }
+        versions[i] = obj;
+      });
+      console.log(versions);
 
       $.ajax({
         method: "GET",
@@ -128,11 +127,7 @@
         url: "/createMission",
         data: {
           script: $('#script :selected').text(),
-          phone: Phone,
-          app: App,
-          firmware: Firmware,
-          sensor: Sensor,
-          config: Config
+          versions: versions
         }
       }).done(function(msg) {
         console.log(msg);
