@@ -9,6 +9,15 @@ class TestVersionManager{
         this.versionList.push(new TestVersion(name, category));
     }
 
+    RemoveVersion(name, category){
+        let versions =this.versionList;
+        versions.forEach((version, versionIndex, versionArray) => {
+            if(version.name == name && version.category == category){
+                versions.splice(versionIndex, 1);
+            }
+        });
+    }
+
     MakeVersionsSameCategory(versionList, categoryName){
         versionList.forEach((version) => {
             this.versionList.push(new TestVersion(version, categoryName));

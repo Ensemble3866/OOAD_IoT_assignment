@@ -10,14 +10,14 @@ class TestMissionManager{
         this.missionList.push(newTestMission);
         return newTestMission;
     }
-    /*
-    GetMissionByStartTime(time){
-        var script = this.scripts.find((script) => {
-            return script.name == scriptName;
+    
+    GetMissionById(id){
+        var mission = this.mission.find((mission) => {
+            return mission.id == id;
         });
-        return script;
+        return id;
     }
-    */
+    
 }
 
 module.exports = TestMissionManager;
