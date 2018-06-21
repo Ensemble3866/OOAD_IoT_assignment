@@ -56,7 +56,7 @@ router.get('/testResults', function(req, res, next) {
   console.log('missionId = ' + req.query.missionId);
   var mission = repository.testMissionRepository.missionList[0];
   console.log('mission = ' + mission);
-  res.render('testResults', { mission: mission, test: JSON.stringify(mission) });
+  res.render('testResults', { mission: mission });
   // var mission = repository.testMissionRepository.GetMissionByTitle(req.query.missionName);
   // console.log('mission = ' + mission);
   // res.render('testResults', { mission: mission, test: JSON.stringify(mission) });

@@ -56,28 +56,31 @@
         <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
-                    <th>測試腳本</th>
                     <th>測試時間</th>
+                    <th>測試腳本</th>
                     <th>配對數量</th>
                     <th>測試結果</th>
+                    <th>測試報告</th>
                 </tr>
             </thead>
             <tbody>
                 <% for (key in missions) { %>
                 <tr>
-                    <td><%= missions[key].script.name %></td>
                     <td><%= missions[key].startTime %></td>
+                    <td><%= missions[key].script.name %></td>
                     <td><a href="testResults?missionId=<%= missions[key].id %>">共 <%= missions[key].combinations.length %> 項</a></td>
                     <td><%= missions[key].GetSuccessRate() %> %</td>
+                    <td><a href="<%= missions[key].report %>">連結</a></td>
                 </tr>
                 <% } %>
             </tbody>
             <tfoot>
                 <tr>
-                    <th>測試腳本</th>
                     <th>測試時間</th>
+                    <th>測試腳本</th>
                     <th>配對數量</th>
                     <th>測試結果</th>
+                    <th>測試報告</th>
                 </tr>
             </tfoot>
         </table>
