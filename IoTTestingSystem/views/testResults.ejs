@@ -72,7 +72,7 @@
       <div class="div_body">
         <div class="div_titleBox">
             <div class="alert alert-primary clearfix" role="alert">
-                <div class="float-left"><h3><%= mission.title %></h3></div>
+                <div class="float-left"><h3><%= mission.script.name %></h3></div>
                 <div class="float-right" id="div_time">測試時間: <%= mission.startTime %></div>
             </div>
         </div>
@@ -81,11 +81,6 @@
                 <tr>
                     <% for (key in mission.script.parameters) { %>
                     <th><%= mission.script.parameters[key] %></th>
-                    <!-- <th>手機版本</th>
-                    <th>APP版本</th>
-                    <th>韌體版本</th>
-                    <th>感測器版本</th>
-                    <th>頻道設定</th> -->
                     <% } %>
                     <th>測試結果</th>
                     <th>詳細報告</th>
@@ -94,7 +89,7 @@
             <tbody>
                 <% for (key in mission.combinations) { %>
                 <tr>
-                    <% for (index in mission.combinations) { %>
+                    <% for (index in mission.combinations[key].versionList) { %>
                     <td><%= mission.combinations[key].versionList[index].name %></td>
                     <% } %>
                     <td>
@@ -110,13 +105,11 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th>手機版本</th>
-                    <th>APP版本</th>
-                    <th>韌體版本</th>
-                    <th>感測器版本</th>
-                    <th>頻道設定</th>
+                    <% for (key in mission.script.parameters) { %>
+                    <th><%= mission.script.parameters[key] %></th>
+                    <% } %>
                     <th>測試結果</th>
-                    <th>備註</th>
+                    <th>詳細報告</th>
                 </tr>
             </tfoot>
         </table>

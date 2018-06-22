@@ -12,10 +12,10 @@ class TestMissionManager{
     }
     
     GetMissionById(id){
-        var mission = this.mission.find((mission) => {
+        var mission = this.missionList.find((mission) => {
             return mission.id == id;
         });
-        return id;
+        return mission;
     }
     
 }

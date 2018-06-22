@@ -74,7 +74,7 @@
                                 <% for (index in categoryList[key].list) { %>
                                 <tr>
                                     <td style="width: 80%;" class="align-middle"><%= categoryList[key].list[index].name %></td>
-                                    <td style="width: 20%;"><button type="button" class="btn btn-danger">刪除</button></td>
+                                    <td style="width: 20%;"><button type="button" class="btn btn-danger" onclick="removeVersion('<%= categoryList[key].list[index].name %>', '<%= categoryList[key].list[index].category %>')">刪除</button></td>
                                 </tr>
                                 <% } %>
                             </tbody>
@@ -127,6 +127,29 @@
         console.log(msg);
         if (msg=='OK'){
           alert("新增版本成功");
+          location.href= ("manageVersions");
+        }
+        else{
+          alert(msg);
+        }
+      });
+    }
+
+    // 刪除版本
+    function removeVersion(versionName, categoryName){
+      $.ajax({
+        method: "GET",
+        contentType:"application/json; charset=utf-8",
+        dataType: "text",
+        url: "/RemoveVersion",
+        data: {
+          versionName: versionName,
+          categoryName: categoryName
+        }
+      }).done(function(msg) {
+        console.log(msg);
+        if (msg=='OK'){
+          alert("刪除版本成功");
           location.href= ("manageVersions");
         }
         else{
