@@ -1,7 +1,7 @@
 var firebase = require("firebase");
 var TestVersion = require('../lib/testVersion');
 var TestScript = require('../lib/testScript');
-var user = require('../lib/user');
+var User = require('../lib/user');
 var TestVersionManager = require('../lib/testVersionManager');
 var TestScriptManager = require('../lib/testScriptManager');
 var TestMissionManager = require('../lib/testMissionManager');
@@ -58,6 +58,7 @@ TestMissionRef.once("value", function(snapshot){
     console.log("The read failed: " + errorObject.code);
 });
 
+exports.userRepository = userRepository;
 exports.testVersionRepository = testVersionRepository;
 exports.testScriptRepository = testScriptRepository;
 exports.testMissionRepository = testMissionRepository;

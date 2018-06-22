@@ -7,9 +7,36 @@ const TestVersion = require('../lib/TestVersion');
 var testdata = require('../test/testdata');
 var repository = require('../lib/repository');
 
-/* GET home page. */
+/* GET login page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('login', { title: 'Express' });
+});
+
+/* GET login. */
+router.get('/login', function(req, res, next) {
+  console.log('query = ' + JSON.stringify(req.query));
+
+  var status = false;
+  var JData;
+  for (const key in repository.userRepository) {
+    if (repository.userRepository[key].Login(req.query.account, req.query.password)) {
+      JData = {
+        status: true,
+        id: repository.userRepository[key].id,
+        name: repository.userRepository[key].name,
+        authority: repository.userRepository[key].authority
+      }
+      res.send(JData);
+      status = true;
+    }
+  }
+
+  if (!status) {
+    JData = {
+      status: false
+    }
+    res.send(JData);
+  }
 });
 
 /* GET performTests page. */
