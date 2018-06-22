@@ -1,6 +1,7 @@
 var firebase = require("firebase");
 var TestVersion = require('../lib/testVersion');
 var TestScript = require('../lib/testScript');
+var user = require('../lib/user');
 var TestVersionManager = require('../lib/testVersionManager');
 var TestScriptManager = require('../lib/testScriptManager');
 var TestMissionManager = require('../lib/testMissionManager');
@@ -17,9 +18,12 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 
+var userRepository = new Array();
 var testVersionRepository = new TestVersionManager();
 var testScriptRepository = new TestScriptManager();
 var testMissionRepository = new TestMissionManager();
+
+userRepository.push(new User('1', '林亮勳', 'acc1', 'pas1', '開發人員'));
 
 var TestVersionRef = database.ref("TestVersion/");
 TestVersionRef.once("value", function(snapshot){

@@ -24,7 +24,6 @@ router.get('/performTests', function(req, res, next) {
 
 /* GET getScriptByName. */
 router.get('/getScriptByName', function(req, res, next) {
-  console.log('scriptName = ' + req.query.scriptName);
   var script = repository.testScriptRepository.GetScrictByName(req.query.scriptName);
   console.log('parameters = ' + script.parameters);
 
