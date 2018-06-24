@@ -7,14 +7,6 @@ class User{
         this.authority = auth;
     }
 
-    GetId(){
-        return this.id;
-    }
-
-    GetAuthority(){
-        return this.authority;
-    }
-
     Login(account, password){
         var status = false;
         if(account==this.account && password==this.password){

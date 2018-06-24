@@ -4,7 +4,7 @@ const TestScriptManager = require('../lib/testScriptManager');
 
 var testScript = new TestScriptManager();
 
-describe('#TestVersion', () => {
+describe('#TestScript', () => {
     it('should return the attribute of version', done => {
         var parameter1 = ["Phone", "App", "Firmware", "Sensor", "Config"];
         var parameter2 = ["App"];

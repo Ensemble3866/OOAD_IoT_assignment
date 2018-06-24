@@ -1,5 +1,8 @@
 const should = require('should');
+const assert = require('assert');
 const TestMission = require('../lib/testMission');
+const TestScript = require('../lib/testScript');
+const TestVersionManager = require('../lib/testVersionManager');
 const testdata = require('./testdata');
 
 var testVersionManager = testdata.testVersionManager;
@@ -7,7 +10,7 @@ var testScriptManager = testdata.testScriptManager;
 
 var testMission = new TestMission(testScriptManager.GetScrictByName("FullTest"), testVersionManager);
 
-describe('#TestMission #TestCombination', () => {
+describe('#TestMission', () => {
     it('Test testMission lifecycle', done => {
         testMission.status.should.equal("inital");
         testMission.script.name.should.equal("FullTest");
@@ -33,5 +36,32 @@ describe('#TestMission #TestCombination', () => {
         testMission.status.should.equal("testing");
         testMission.GetSuccessRate().should.equal(0);
         done();
-    })
+    });
+
+    describe('StartTesting()', () => {
+        it('should start the testing', function() {
+            var script = new TestScript('InstallTest', ["Phone", "App"]);
+            var testVersionManager = new TestVersionManager();
+            testVersionManager.MakeNewVersion("Android 5.01", "Phone");
+            testVersionManager.MakeNewVersion("Android 5.02", "Phone");
+            testVersionManager.MakeNewVersion("MyApp 1.00", "App");
+            testVersionManager.MakeNewVersion("MyApp Beta", "App");
+            var testMission = new TestMission(script, testVersionManager);
+            testMission.StartTesting();
+            assert.equal(testMission.status, 'testing',  'Incorrect status');
+        });
+    });
+
+    describe('GetSuccessRate()', () => {
+        it('should return the rate', function() {
+            var script = new TestScript('InstallTest', ["Phone", "App"]);
+            var testVersionManager = new TestVersionManager();
+            testVersionManager.MakeNewVersion("Android 5.01", "Phone");
+            testVersionManager.MakeNewVersion("Android 5.02", "Phone");
+            testVersionManager.MakeNewVersion("MyApp 1.00", "App");
+            testVersionManager.MakeNewVersion("MyApp Beta", "App");
+            var testMission = new TestMission(script, testVersionManager);
+            assert.equal(testMission.GetSuccessRate(), 0,  'Incorrect rate');
+        });
+    });
 });
