@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const fs = require('fs');
 
 const TestVersionManager = require('../lib/TestVersionManager');
 const TestVersion = require('../lib/TestVersion');
@@ -81,6 +82,12 @@ router.get('/historyRecord', function(req, res, next) {
 router.get('/testResults', function(req, res, next) {
   var mission = repository.testMissionRepository.GetMissionById(req.query.missionId);
   res.render('testResults', { mission: mission });
+});
+
+/* GET report page. */
+router.get('/report', function(req, res, next) {
+  var robotframeworkReport = fs.readFileSync("RFRepo/" + req.query.report, "utf-8");
+  res.render('report', { report: robotframeworkReport });
 });
 
 /* GET createMission. */
