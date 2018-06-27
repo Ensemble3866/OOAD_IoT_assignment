@@ -59,6 +59,7 @@
                     <th>測試時間</th>
                     <th>測試腳本</th>
                     <th>配對數量</th>
+                    <th>測試狀態</th>
                     <th>測試結果</th>
                     <th>測試報告</th>
                 </tr>
@@ -69,6 +70,7 @@
                     <td><%= missions[key].startTime %></td>
                     <td><%= missions[key].script.name %></td>
                     <td><a href="testResults?missionId=<%= missions[key].id %>">共 <%= missions[key].combinations.length %> 項</a></td>
+                    <td><%= missions[key].status %></td>
                     <td><%= missions[key].GetSuccessRate() %> %</td>
                     <td><a href="<%= missions[key].report %>">連結</a></td>
                 </tr>
@@ -79,6 +81,7 @@
                     <th>測試時間</th>
                     <th>測試腳本</th>
                     <th>配對數量</th>
+                    <th>測試狀態</th>
                     <th>測試結果</th>
                     <th>測試報告</th>
                 </tr>
